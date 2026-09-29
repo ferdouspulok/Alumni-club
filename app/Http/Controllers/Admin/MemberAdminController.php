@@ -61,7 +61,7 @@ class MemberAdminController extends Controller
 
     public function approve(Member $member): RedirectResponse
     {
-        if ($member->status === 'approved') {
+        if ($member->status === 'approved' && $member->user_id) {
             return back()->with('info', 'This member is already approved.');
         }
 
@@ -70,9 +70,11 @@ class MemberAdminController extends Controller
             $member->member_id = MemberService::generateMemberId();
         }
 
+        $defaultPassword = 'password123';
+
         // Create or link User account
         if (!$member->user_id) {
-            $email = $member->email ?: 'member.' . strtolower(str_replace(['-', ' '], '', $member->member_id)) . '@chatkhil.club';
+            $email = $member->email ?: 'member.' . strtolower(str_replace(['-', ' '], '', $member->member_id)) . '@celiteclub.com';
             
             $existingUser = User::where('email', $email)->orWhere('phone', $member->mobile)->first();
 
@@ -83,7 +85,7 @@ class MemberAdminController extends Controller
                     'name' => $member->full_name,
                     'email' => $email,
                     'phone' => $member->mobile,
-                    'password' => Hash::make('password123'),
+                    'password' => Hash::make($defaultPassword),
                     'role' => 'member',
                     'status' => 'active',
                 ]);
@@ -96,7 +98,53 @@ class MemberAdminController extends Controller
         $member->approved_at = now();
         $member->save();
 
-        return back()->with('success', "Member successfully approved! Assigned Member ID: {$member->member_id}. Member can now log in.");
+        return back()
+            ->with('approved_credentials', [
+                'name' => $member->full_name,
+                'member_id' => $member->member_id,
+                'mobile' => $member->mobile,
+                'email' => $member->user ? $member->user->email : $member->email,
+                'password' => $defaultPassword,
+                'login_url' => route('login'),
+                'type' => $member->membershipType ? $member->membershipType->name : 'Member',
+            ])
+            ->with('success', "Member {$member->full_name} has been approved successfully! Member ID: {$member->member_id}.");
+    }
+
+    public function resetPassword(Request $request, Member $member): RedirectResponse
+    {
+        $request->validate([
+            'new_password' => 'nullable|string|min:6',
+        ]);
+
+        if (!$member->user) {
+            $email = $member->email ?: 'member.' . strtolower(str_replace(['-', ' '], '', $member->member_id ?? $member->id)) . '@celiteclub.com';
+            $user = User::create([
+                'name' => $member->full_name,
+                'email' => $email,
+                'phone' => $member->mobile,
+                'password' => Hash::make('password123'),
+                'role' => 'member',
+                'status' => 'active',
+            ]);
+            $member->user_id = $user->id;
+            $member->save();
+        }
+
+        $newPassword = $request->filled('new_password') ? $request->input('new_password') : 'CEC@' . rand(1000, 9999);
+        $member->user->password = Hash::make($newPassword);
+        $member->user->save();
+
+        return back()
+            ->with('reset_credentials', [
+                'name' => $member->full_name,
+                'member_id' => $member->member_id,
+                'mobile' => $member->mobile,
+                'email' => $member->user->email,
+                'password' => $newPassword,
+                'login_url' => route('login'),
+            ])
+            ->with('success', "Password for {$member->full_name} ({$member->member_id}) has been reset successfully!");
     }
 
     public function reject(Request $request, Member $member): RedirectResponse
@@ -173,19 +221,32 @@ class MemberAdminController extends Controller
         $member = Member::create($validated);
 
         if ($validated['status'] === 'approved') {
-            $email = $member->email ?: 'member.' . strtolower(str_replace(['-', ' '], '', $member->member_id)) . '@chatkhil.club';
+            $email = $member->email ?: 'member.' . strtolower(str_replace(['-', ' '], '', $member->member_id)) . '@celiteclub.com';
+            $defaultPassword = 'password123';
             $user = User::create([
                 'name' => $member->full_name,
                 'email' => $email,
                 'phone' => $member->mobile,
-                'password' => Hash::make('password123'),
+                'password' => Hash::make($defaultPassword),
                 'role' => 'member',
                 'status' => 'active',
             ]);
             $member->update(['user_id' => $user->id]);
+
+            return redirect()->route('admin.members.show', $member)
+                ->with('approved_credentials', [
+                    'name' => $member->full_name,
+                    'member_id' => $member->member_id,
+                    'mobile' => $member->mobile,
+                    'email' => $user->email,
+                    'password' => $defaultPassword,
+                    'login_url' => route('login'),
+                    'type' => $member->membershipType ? $member->membershipType->name : 'Member',
+                ])
+                ->with('success', "New member {$member->full_name} created & approved! Member ID: {$member->member_id}.");
         }
 
-        return redirect()->route('admin.members.index')->with('success', 'New member successfully created.');
+        return redirect()->route('admin.members.index')->with('success', 'New member application successfully created.');
     }
 
     public function edit(Member $member): View

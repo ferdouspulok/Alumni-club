@@ -50,15 +50,15 @@ class AuthController extends Controller
                 $coreDigits = substr($digitsOnly, -10);
 
                 $user = \App\Models\User::where('phone', $login)
-                    ->orWhereRaw("REPLACE(REPLACE(phone, ' ', ''), '-', '') LIKE ?", ['%' . $coreDigits])
+                    ->orWhereRaw("REPLACE(REPLACE(REPLACE(phone, ' ', ''), '-', ''), '+', '') LIKE ?", ['%' . $coreDigits])
                     ->first();
 
                 // If not found in users table phone, also check members table mobile & whatsapp
                 if (!$user) {
                     $memberByPhone = \App\Models\Member::where('mobile', $login)
                         ->orWhere('whatsapp_number', $login)
-                        ->orWhereRaw("REPLACE(REPLACE(mobile, ' ', ''), '-', '') LIKE ?", ['%' . $coreDigits])
-                        ->orWhereRaw("REPLACE(REPLACE(whatsapp_number, ' ', ''), '-', '') LIKE ?", ['%' . $coreDigits])
+                        ->orWhereRaw("REPLACE(REPLACE(REPLACE(mobile, ' ', ''), '-', ''), '+', '') LIKE ?", ['%' . $coreDigits])
+                        ->orWhereRaw("REPLACE(REPLACE(REPLACE(whatsapp_number, ' ', ''), '-', ''), '+', '') LIKE ?", ['%' . $coreDigits])
                         ->first();
 
                     if ($memberByPhone && $memberByPhone->user) {

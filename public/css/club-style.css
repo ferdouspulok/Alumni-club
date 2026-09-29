@@ -64,12 +64,47 @@ h1, h2, h3, h4, .club-heading, .font-regal {
     letter-spacing: 0.02em;
 }
 
+.text-navy {
+    color: #0a1322 !important;
+}
+
 .brand-elite {
     font-family: 'Plus Jakarta Sans', sans-serif;
     font-weight: 900;
     color: var(--liquid-navy-deep);
     letter-spacing: 0.05em;
     text-transform: uppercase;
+}
+
+/* Enforce High-Contrast Black/Dark Text on White and Light Backgrounds */
+.badge.bg-light, 
+.badge.bg-white,
+.badge-light,
+.badge.border,
+.badge.text-navy,
+.badge.bg-light.text-navy,
+.badge.bg-white.text-navy {
+    color: #0a1322 !important;
+    background-color: #f1f5f9 !important;
+    border: 1px solid #cbd5e1 !important;
+    font-weight: 700 !important;
+}
+
+.member-id-badge {
+    background-color: #f1f5f9 !important;
+    color: #0a1322 !important;
+    border: 1.5px solid #94a3b8 !important;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace !important;
+    font-weight: 800 !important;
+    padding: 3px 8px !important;
+    border-radius: 6px !important;
+    font-size: 0.88rem !important;
+    letter-spacing: 0.04em !important;
+    display: inline-block;
+}
+
+.table td, .table th {
+    color: #1e293b;
 }
 
 /* Ambient Glass Accents */

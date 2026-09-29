@@ -139,6 +139,7 @@ Route::prefix('admin')->name('admin.')->middleware('admin')->group(function () {
     Route::delete('/members/{member}', [MemberAdminController::class, 'destroy'])->name('members.destroy');
     Route::post('/members/{member}/approve', [MemberAdminController::class, 'approve'])->name('members.approve');
     Route::post('/members/{member}/reject', [MemberAdminController::class, 'reject'])->name('members.reject');
+    Route::post('/members/{member}/reset-password', [MemberAdminController::class, 'resetPassword'])->name('members.reset-password');
 
     // Membership Types
     Route::get('/membership-types', [MembershipTypeAdminController::class, 'index'])->name('membership-types.index');

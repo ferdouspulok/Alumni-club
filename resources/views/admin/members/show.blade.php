@@ -17,8 +17,14 @@
                 <i class="bi bi-pencil me-1"></i> Edit Details
             </a>
 
+            @if($member->status === 'approved')
+                <button type="button" class="btn btn-warning btn-sm fw-bold text-dark" data-bs-toggle="modal" data-bs-target="#resetPasswordModal">
+                    <i class="bi bi-key-fill me-1"></i> Reset Password
+                </button>
+            @endif
+
             @if($member->status === 'pending')
-                <form action="{{ route('admin.members.approve', $member) }}" method="POST" class="d-inline" onsubmit="return confirm('Approve this member? A unique Member ID and login credentials will be generated.');">
+                <form action="{{ route('admin.members.approve', $member) }}" method="POST" class="d-inline" onsubmit="return confirm('Approve this member? A unique Member ID and login credentials will be generated and shown.');">
                     @csrf
                     <button type="submit" class="btn btn-success btn-sm">
                         <i class="bi bi-check-circle me-1"></i> Approve Membership
@@ -40,10 +46,14 @@
                     <img src="{{ $member->photo_url }}" alt="Photo" style="width: 100%; height: 100%; object-fit: cover;">
                 </div>
                 <div>
-                    <h3 class="font-serif text-navy mb-1">{{ $member->full_name }}</h3>
+                    <h3 class="font-serif text-navy mb-1" style="color: #0a1322 !important;">{{ $member->full_name }}</h3>
                     <div class="d-flex flex-wrap gap-2 align-items-center">
-                        <span class="badge bg-warning text-dark font-monospace fs-6">{{ $member->member_id ?? 'PENDING ID' }}</span>
-                        <span class="badge bg-light text-navy border">{{ $member->membershipType ? $member->membershipType->name : 'N/A' }}</span>
+                        @if($member->member_id)
+                            <span class="member-id-badge fs-6">{{ $member->member_id }}</span>
+                        @else
+                            <span class="badge bg-secondary-subtle text-dark border">PENDING ID</span>
+                        @endif
+                        <span class="badge bg-light text-navy border fw-semibold">{{ $member->membershipType ? $member->membershipType->name : 'N/A' }}</span>
                         @if($member->status === 'approved')
                             <span class="badge bg-success"><i class="bi bi-check-circle-fill me-1"></i> Approved Member</span>
                         @elseif($member->status === 'pending')
@@ -56,10 +66,13 @@
             </div>
 
             @if($member->member_id)
-                <div>
+                <div class="d-flex gap-2">
                     <a href="{{ route('verify.member', $member->member_id) }}" target="_blank" class="btn btn-outline-dark btn-sm">
-                        <i class="bi bi-qr-code me-1"></i> Test Public QR Verification
+                        <i class="bi bi-qr-code me-1"></i> Test Public QR
                     </a>
+                    <button type="button" class="btn btn-outline-warning text-dark btn-sm fw-bold" data-bs-toggle="modal" data-bs-target="#resetPasswordModal">
+                        <i class="bi bi-key-fill text-warning me-1"></i> Reset Password
+                    </button>
                 </div>
             @endif
         </div>
@@ -68,18 +81,20 @@
             <div class="mt-3 p-3 rounded-3 border small" style="background: rgba(246, 248, 251, 0.95); border-left: 4px solid var(--club-gold) !important;">
                 <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-2">
                     <div>
-                        <strong class="text-navy"><i class="bi bi-key-fill text-warning me-1"></i> Member Portal Login Access:</strong>
+                        <strong class="text-navy" style="color: #0a1322 !important;"><i class="bi bi-key-fill text-warning me-1"></i> Member Portal Login Access:</strong>
                         <span class="ms-1 text-muted">The member can log into their private dashboard using any of:</span>
                         <div class="mt-2 d-flex flex-wrap gap-2 align-items-center">
-                            <span class="badge bg-white text-navy border font-monospace px-2 py-1"><i class="bi bi-person-badge text-warning me-1"></i> Member ID: <strong>{{ $member->member_id }}</strong></span>
+                            <span class="member-id-badge"><i class="bi bi-person-badge text-warning me-1"></i> Member ID: <strong>{{ $member->member_id }}</strong></span>
                             <span class="badge bg-white text-navy border px-2 py-1"><i class="bi bi-telephone text-warning me-1"></i> Mobile: <strong>{{ $member->mobile }}</strong></span>
                             @if($member->email)
                                 <span class="badge bg-white text-navy border px-2 py-1"><i class="bi bi-envelope text-warning me-1"></i> Email: <strong>{{ $member->email }}</strong></span>
                             @endif
-                            <span class="badge bg-warning text-dark px-2 py-1"><i class="bi bi-lock me-1"></i> Default Password: <strong>password123</strong></span>
                         </div>
                     </div>
-                    <div>
+                    <div class="d-flex align-items-center gap-2">
+                        <button type="button" class="btn btn-sm btn-warning text-dark fw-bold" data-bs-toggle="modal" data-bs-target="#resetPasswordModal">
+                            <i class="bi bi-key-fill me-1"></i> Reset Password
+                        </button>
                         <span class="badge bg-success-subtle text-success border border-success-subtle px-3 py-2">
                             <i class="bi bi-check-circle-fill me-1"></i> Account Active
                         </span>
@@ -286,5 +301,46 @@
             </div>
         </div>
     </div>
+
+    @if($member->status === 'approved')
+        <!-- Reset Password Modal -->
+        <div class="modal fade" id="resetPasswordModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content border-0 shadow-lg rounded-4 overflow-hidden">
+                    <form action="{{ route('admin.members.reset-password', $member) }}" method="POST">
+                        @csrf
+                        <div class="modal-header text-white" style="background: linear-gradient(135deg, #070e1b 0%, #0d1a30 60%, #152643 100%); border-bottom: 2px solid var(--liquid-gold);">
+                            <h5 class="modal-title font-serif fw-bold text-white mb-0 fs-6">
+                                <i class="bi bi-key-fill text-warning me-2"></i> Reset Member Password
+                            </h5>
+                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                        </div>
+                        <div class="modal-body p-4 bg-white text-dark">
+                            <div class="p-3 bg-light rounded-3 border mb-3">
+                                <div class="fw-bold text-navy" style="color: #0a1322 !important;">{{ $member->full_name }}</div>
+                                <div class="small text-muted">
+                                    Member ID: <span class="member-id-badge">{{ $member->member_id }}</span> &bull; Mobile: <strong>{{ $member->mobile }}</strong>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label small fw-semibold text-dark">New Password (Optional):</label>
+                                <input type="text" name="new_password" class="form-control" placeholder="Leave empty to auto-generate (e.g. CEC@7849)" minlength="6">
+                                <div class="form-text small text-muted">
+                                    If left blank, system will generate a secure random password like <code>CEC@8492</code>. The new password and login instructions will pop up immediately with a 1-click WhatsApp send button and clipboard copy.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer bg-light py-2">
+                            <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                            <button type="submit" class="btn btn-sm btn-warning text-dark fw-bold px-3">
+                                <i class="bi bi-check2-circle me-1"></i> Reset & View Credentials
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    @endif
 
 @endsection

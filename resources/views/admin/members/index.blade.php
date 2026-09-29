@@ -91,9 +91,15 @@
                                 </div>
                             </td>
                             <td>
-                                <span class="badge bg-light text-navy border font-monospace fs-6">
-                                    {{ $m->member_id ?? 'PENDING' }}
-                                </span>
+                                @if($m->member_id)
+                                    <span class="member-id-badge">
+                                        {{ $m->member_id }}
+                                    </span>
+                                @else
+                                    <span class="badge bg-secondary-subtle text-dark border">
+                                        PENDING
+                                    </span>
+                                @endif
                             </td>
                             <td>
                                 <span class="badge bg-warning text-dark">
@@ -127,6 +133,11 @@
                                 <a href="{{ route('admin.members.edit', $m) }}" class="btn btn-sm btn-outline-secondary" title="Edit">
                                     <i class="bi bi-pencil"></i>
                                 </a>
+                                @if($m->status === 'approved')
+                                    <button type="button" class="btn btn-sm btn-outline-warning text-dark" title="Reset Member Password" data-bs-toggle="modal" data-bs-target="#resetModal{{ $m->id }}">
+                                        <i class="bi bi-key-fill text-warning"></i>
+                                    </button>
+                                @endif
                                 <form action="{{ route('admin.members.destroy', $m) }}" method="POST" class="d-inline" onsubmit="return confirm('Are you sure you want to delete this member record?');">
                                     @csrf
                                     @method('DELETE')
@@ -134,6 +145,46 @@
                                         <i class="bi bi-trash"></i>
                                     </button>
                                 </form>
+
+                                @if($m->status === 'approved')
+                                    <!-- Row-level Reset Password Modal -->
+                                    <div class="modal fade" id="resetModal{{ $m->id }}" tabindex="-1" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered text-start">
+                                            <div class="modal-content border-0 shadow rounded-4 overflow-hidden">
+                                                <form action="{{ route('admin.members.reset-password', $m) }}" method="POST">
+                                                    @csrf
+                                                    <div class="modal-header text-white" style="background: linear-gradient(135deg, #070e1b 0%, #0d1a30 60%, #152643 100%); border-bottom: 2px solid var(--liquid-gold);">
+                                                        <h5 class="modal-title font-serif text-white fs-6">
+                                                            <i class="bi bi-key-fill text-warning me-2"></i> Reset Member Password
+                                                        </h5>
+                                                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                                                    </div>
+                                                    <div class="modal-body p-4 bg-white text-dark">
+                                                        <div class="p-3 bg-light rounded-3 border mb-3">
+                                                            <div class="fw-bold text-navy" style="color: #0a1322 !important;">{{ $m->full_name }}</div>
+                                                            <div class="small text-muted">
+                                                                Member ID: <span class="member-id-badge">{{ $m->member_id }}</span> &bull; Mobile: <strong>{{ $m->mobile }}</strong>
+                                                            </div>
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label class="form-label small fw-semibold text-dark">New Password (Optional):</label>
+                                                            <input type="text" name="new_password" class="form-control" placeholder="Leave blank to auto-generate (e.g. CEC@7849)" minlength="6">
+                                                            <div class="form-text small text-muted">
+                                                                Leave blank to auto-generate a secure random password. You will see a pop-up with the new credentials and a 1-click WhatsApp/Copy button.
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer bg-light py-2">
+                                                        <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                                        <button type="submit" class="btn btn-sm btn-warning text-dark fw-bold px-3">
+                                                            <i class="bi bi-check2-circle me-1"></i> Reset & View Credentials
+                                                        </button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endif
                             </td>
                         </tr>
                     @empty

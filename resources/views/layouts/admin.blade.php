@@ -169,8 +169,131 @@
         </div>
     </div>
 
+    @php
+        $credData = session('approved_credentials') ?? session('reset_credentials');
+        $isReset = session()->has('reset_credentials');
+    @endphp
+
+    @if($credData)
+        <!-- Automatic Pop-up Modal for Member ID & Password Delivery -->
+        <div class="modal fade" id="credentialsPopupModal" tabindex="-1" aria-labelledby="credentialsPopupTitle" aria-hidden="true" data-bs-backdrop="static">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content border-0 shadow-lg rounded-4 overflow-hidden">
+                    <div class="modal-header text-white" style="background: linear-gradient(135deg, #070e1b 0%, #0d1a30 60%, #152643 100%); border-bottom: 2px solid var(--liquid-gold);">
+                        <div class="d-flex align-items-center gap-2">
+                            <i class="bi bi-shield-check text-warning fs-4"></i>
+                            <div>
+                                <h5 class="modal-title font-serif fw-bold text-white mb-0" id="credentialsPopupTitle">
+                                    {{ $isReset ? 'Password Reset — New Credentials' : 'Member Approved & Credentials Generated' }}
+                                </h5>
+                                <small class="text-light-50" style="color: #cbd5e1;">Ready to send to the member</small>
+                            </div>
+                        </div>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body p-4" style="background: #faf8f5;">
+                        <div class="text-center mb-3">
+                            <h5 class="fw-bold text-navy mb-1" style="color: #0a1322 !important;">{{ $credData['name'] }}</h5>
+                            <span class="badge bg-warning text-dark px-3 py-1 font-monospace fs-6 fw-bold" style="color: #000000 !important;">
+                                Member ID: {{ $credData['member_id'] }}
+                            </span>
+                        </div>
+
+                        <!-- Visual Credentials Details -->
+                        <div class="p-3 bg-white rounded-3 border mb-3 shadow-sm text-dark">
+                            <div class="d-flex justify-content-between py-1 border-bottom">
+                                <span class="text-muted small">Login ID / Username:</span>
+                                <strong class="text-navy font-monospace" style="color: #0a1322 !important;">{{ $credData['member_id'] }}</strong>
+                            </div>
+                            <div class="d-flex justify-content-between py-1 border-bottom">
+                                <span class="text-muted small">Registered Mobile:</span>
+                                <strong class="text-navy" style="color: #0a1322 !important;">{{ $credData['mobile'] }}</strong>
+                            </div>
+                            <div class="d-flex justify-content-between py-1 border-bottom">
+                                <span class="text-muted small">Email Address:</span>
+                                <span class="text-dark">{{ $credData['email'] ?: 'N/A' }}</span>
+                            </div>
+                            <div class="d-flex justify-content-between py-2 align-items-center">
+                                <span class="text-muted small">Portal Password:</span>
+                                <span class="badge bg-danger-subtle text-danger border border-danger-subtle font-monospace fs-6 px-3 py-1 fw-bold">
+                                    {{ $credData['password'] }}
+                                </span>
+                            </div>
+                            <div class="d-flex justify-content-between py-1 border-top">
+                                <span class="text-muted small">Portal Web Link:</span>
+                                <a href="{{ $credData['login_url'] }}" target="_blank" class="small text-navy text-decoration-none fw-semibold" style="color: #0a1322 !important;">
+                                    {{ $credData['login_url'] }}
+                                </a>
+                            </div>
+                        </div>
+
+                        @php
+                            $waPhone = preg_replace('/[^0-9]/', '', $credData['mobile']);
+                            if (strlen($waPhone) === 11 && str_starts_with($waPhone, '01')) {
+                                $waPhone = '88' . $waPhone;
+                            }
+                            $shareText = "Assalamu Alaikum " . $credData['name'] . ",\n\n" . 
+                                ($isReset ? "Your login password for Chatkhil ELITE Club Ltd. has been reset." : "Congratulations! Your membership for Chatkhil ELITE Club Ltd. has been approved.") . "\n\n" .
+                                "Member ID: " . $credData['member_id'] . "\n" .
+                                "Portal Link: " . $credData['login_url'] . "\n" .
+                                "Login ID: " . $credData['member_id'] . " or " . $credData['mobile'] . "\n" .
+                                "Password: " . $credData['password'] . "\n\n" .
+                                "Please sign in to access your verified Digital ID Card.\n- Secretariat, Chatkhil ELITE Club Ltd.";
+                        @endphp
+
+                        <!-- Pre-formatted Message for WhatsApp/SMS -->
+                        <div class="mb-3">
+                            <label class="form-label small fw-bold text-navy mb-1" style="color: #0a1322 !important;">
+                                <i class="bi bi-chat-text text-warning me-1"></i> Formatted Notification Template:
+                            </label>
+                            <textarea id="shareMsgText" class="form-control form-control-sm font-monospace text-dark" rows="5" readonly style="font-size: 0.8rem; background: #ffffff;">{{ $shareText }}</textarea>
+                        </div>
+
+                        <div class="d-flex gap-2">
+                            <button type="button" class="btn btn-club-gold btn-sm flex-grow-1 fw-bold py-2" onclick="copyShareMessage()">
+                                <i class="bi bi-clipboard me-1" id="copyIcon"></i> <span id="copyBtnText">Copy Message to Clipboard</span>
+                            </button>
+                            <a href="https://wa.me/{{ $waPhone }}?text={{ urlencode($shareText) }}" target="_blank" class="btn btn-success btn-sm px-3 py-2 fw-bold" title="Direct WhatsApp Message">
+                                <i class="bi bi-whatsapp me-1"></i> WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                    <div class="modal-footer bg-light py-2">
+                        <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endif
+
     <!-- Bootstrap 5 JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var credModalEl = document.getElementById('credentialsPopupModal');
+            if (credModalEl) {
+                var modal = new bootstrap.Modal(credModalEl);
+                modal.show();
+            }
+        });
+
+        function copyShareMessage() {
+            var copyText = document.getElementById("shareMsgText");
+            if (!copyText) return;
+            copyText.select();
+            copyText.setSelectionRange(0, 99999);
+            navigator.clipboard.writeText(copyText.value).then(function() {
+                var btnText = document.getElementById("copyBtnText");
+                var icon = document.getElementById("copyIcon");
+                if (btnText) btnText.innerText = "Copied to Clipboard!";
+                if (icon) icon.className = "bi bi-check2-circle";
+                setTimeout(function() {
+                    if (btnText) btnText.innerText = "Copy Message to Clipboard";
+                    if (icon) icon.className = "bi bi-clipboard";
+                }, 3000);
+            });
+        }
+    </script>
     @stack('scripts')
 </body>
 </html>

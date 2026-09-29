@@ -64,7 +64,7 @@
                             </td>
                             <td>
                                 @if($m->member && $m->member->member_id)
-                                    <span class="badge bg-light text-navy border font-monospace">{{ $m->member->member_id }}</span>
+                                    <span class="member-id-badge">{{ $m->member->member_id }}</span>
                                 @else
                                     <span class="text-muted small">External / Not Linked</span>
                                 @endif

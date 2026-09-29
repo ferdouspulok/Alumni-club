@@ -16,17 +16,28 @@ class MemberService
         $year = date('Y');
         $prefix = "CEC-{$year}-";
 
-        $lastMember = Member::where('member_id', 'LIKE', "{$prefix}%")
-            ->orderBy('id', 'desc')
-            ->first();
+        $existingIds = Member::where('member_id', 'LIKE', "{$prefix}%")
+            ->pluck('member_id');
 
-        if ($lastMember && preg_match('/CEC-\d{4}-(\d+)/', $lastMember->member_id, $matches)) {
-            $nextNumber = intval($matches[1]) + 1;
-        } else {
-            $nextNumber = 1;
+        $maxNum = 0;
+        foreach ($existingIds as $mid) {
+            if (preg_match('/CEC-\d{4}-(\d+)/', $mid, $matches)) {
+                $num = intval($matches[1]);
+                if ($num > $maxNum) {
+                    $maxNum = $num;
+                }
+            }
         }
 
-        return sprintf("%s%04d", $prefix, $nextNumber);
+        $nextNumber = $maxNum + 1;
+        $candidate = sprintf("%s%04d", $prefix, $nextNumber);
+
+        while (Member::where('member_id', $candidate)->exists()) {
+            $nextNumber++;
+            $candidate = sprintf("%s%04d", $prefix, $nextNumber);
+        }
+
+        return $candidate;
     }
 
     /**
