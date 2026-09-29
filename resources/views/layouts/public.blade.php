@@ -25,46 +25,37 @@
 <body>
 
     <!-- Top Info Bar -->
-    <div class="club-topbar py-1 d-none d-md-block">
+    <div class="club-topbar py-1 d-none d-lg-block">
         <div class="container d-flex justify-content-between align-items-center">
             <div class="d-flex align-items-center gap-3">
-                <span class="badge bg-warning text-dark px-2 py-1 fw-bold" style="font-size: 0.72rem; letter-spacing: 0.05em;">
+                <span class="badge bg-warning text-dark px-2 py-1 fw-bold" style="font-size: 0.7rem; letter-spacing: 0.04em;">
                     “Unity • Excellence • Service • Leadership”
                 </span>
                 <span><i class="bi bi-geo-alt-fill text-warning me-1"></i> Sky View Trade Valley, Naya Paltan, Dhaka</span>
                 <span><i class="bi bi-telephone-fill text-warning me-1"></i> +880 1805 561359</span>
-                <span><i class="bi bi-envelope-fill text-warning me-1"></i> info@celiteclub.com</span>
             </div>
             <div class="d-flex align-items-center gap-3">
+                <span><i class="bi bi-envelope-fill text-warning me-1"></i> info@celiteclub.com</span>
+                <span class="text-secondary">|</span>
                 <a href="{{ \App\Models\Setting::get('facebook_url', '#') }}" target="_blank" title="Facebook"><i class="bi bi-facebook"></i></a>
                 <a href="{{ \App\Models\Setting::get('youtube_url', '#') }}" target="_blank" title="YouTube"><i class="bi bi-youtube"></i></a>
                 <a href="{{ \App\Models\Setting::get('linkedin_url', '#') }}" target="_blank" title="LinkedIn"><i class="bi bi-linkedin"></i></a>
-                <span class="text-secondary">|</span>
-                @auth
-                    @if(auth()->user()->isAdmin())
-                        <a href="{{ route('admin.dashboard') }}" class="badge bg-warning text-dark text-decoration-none px-2 py-1"><i class="bi bi-speedometer2 me-1"></i> Admin Panel</a>
-                    @else
-                        <a href="{{ route('member.dashboard') }}" class="badge bg-warning text-dark text-decoration-none px-2 py-1"><i class="bi bi-person-circle me-1"></i> My Portal</a>
-                    @endif
-                @else
-                    <a href="{{ route('login') }}" class="text-warning fw-semibold"><i class="bi bi-box-arrow-in-right me-1"></i> Member Login</a>
-                @endauth
             </div>
         </div>
     </div>
 
-    <!-- Main Navigation Header -->
+    <!-- Main Navigation Header (Optimized & Compact) -->
     <nav class="navbar navbar-expand-lg club-navbar sticky-top">
         <div class="container">
             <a class="navbar-brand" href="{{ route('home') }}">
                 <img src="{{ asset('images/logo.png') }}" alt="Chatkhil Elite Club Limited" class="brand-logo">
                 <div class="brand-text">
                     <span class="brand-name">Chatkhil <span class="text-warning">ELITE</span> Club</span>
-                    <span class="brand-tagline">Ltd. • (Reg. under Companies Act, BD)</span>
+                    <span class="brand-tagline">Ltd. • Bangladesh</span>
                 </div>
             </a>
             
-            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#clubNavbar" aria-controls="clubNavbar" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler border-0 shadow-none p-1" type="button" data-bs-toggle="collapse" data-bs-target="#clubNavbar" aria-controls="clubNavbar" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
@@ -74,56 +65,48 @@
                         <a class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}" href="{{ route('home') }}">Home</a>
                     </li>
 
+                    <!-- About Dropdown -->
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle {{ request()->is('about*') ? 'active' : '' }}" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            About Us
+                        <a class="nav-link dropdown-toggle {{ request()->is('about*') || request()->routeIs('committee') ? 'active' : '' }}" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            About
                         </a>
-                        <ul class="dropdown-menu shadow-sm border-0">
-                            <li><a class="dropdown-item" href="{{ route('about.index') }}">About the Club</a></li>
-                            <li><a class="dropdown-item" href="{{ route('about.mission') }}">Mission & Vision</a></li>
-                            <li><a class="dropdown-item" href="{{ route('about.president') }}">President's Message</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="{{ route('about.constitution') }}">Constitution & By-Laws</a></li>
+                        <ul class="dropdown-menu dropdown-menu-glass border-0">
+                            <li><a class="dropdown-item" href="{{ route('about.index') }}"><i class="bi bi-info-circle text-warning"></i> About the Club</a></li>
+                            <li><a class="dropdown-item" href="{{ route('committee') }}"><i class="bi bi-people-fill text-warning"></i> Executive Committee</a></li>
+                            <li><a class="dropdown-item" href="{{ route('about.president') }}"><i class="bi bi-chat-quote-fill text-warning"></i> President's Message</a></li>
+                            <li><a class="dropdown-item" href="{{ route('about.mission') }}"><i class="bi bi-compass-fill text-warning"></i> Mission & Vision</a></li>
+                            <li><hr class="dropdown-divider my-1"></li>
+                            <li><a class="dropdown-item" href="{{ route('about.constitution') }}"><i class="bi bi-file-text-fill text-warning"></i> Constitution & By-Laws</a></li>
                         </ul>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link {{ request()->routeIs('committee') ? 'active' : '' }}" href="{{ route('committee') }}">Executive Committee</a>
                     </li>
 
                     <li class="nav-item">
                         <a class="nav-link {{ request()->routeIs('members.index') ? 'active' : '' }}" href="{{ route('members.index') }}">Members</a>
                     </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link {{ request()->routeIs('activities') ? 'active' : '' }}" href="{{ route('activities') }}">Activities</a>
+                    <!-- Events & Media Dropdown -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle {{ request()->is('events*') || request()->is('news*') || request()->is('notices*') || request()->is('gallery*') || request()->routeIs('activities') || request()->is('documents*') ? 'active' : '' }}" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Events & Media
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-glass border-0">
+                            <li><a class="dropdown-item" href="{{ route('events.index') }}"><i class="bi bi-calendar-event-fill text-warning"></i> Club Events</a></li>
+                            <li><a class="dropdown-item" href="{{ route('news.index') }}"><i class="bi bi-newspaper text-warning"></i> News & Activities</a></li>
+                            <li><a class="dropdown-item" href="{{ route('notices.index') }}"><i class="bi bi-megaphone-fill text-warning"></i> Notice Board</a></li>
+                            <li><a class="dropdown-item" href="{{ route('gallery.index') }}"><i class="bi bi-images text-warning"></i> Photo Gallery</a></li>
+                            <li><hr class="dropdown-divider my-1"></li>
+                            <li><a class="dropdown-item" href="{{ route('documents.index') }}"><i class="bi bi-file-earmark-arrow-down-fill text-warning"></i> Club Documents</a></li>
+                        </ul>
                     </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link {{ request()->is('events*') ? 'active' : '' }}" href="{{ route('events.index') }}">Events</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link {{ request()->is('news*') ? 'active' : '' }}" href="{{ route('news.index') }}">News</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link {{ request()->is('notices*') ? 'active' : '' }}" href="{{ route('notices.index') }}">Notices</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link {{ request()->is('gallery*') ? 'active' : '' }}" href="{{ route('gallery.index') }}">Gallery</a>
-                    </li>
-
+                    <!-- Membership Dropdown -->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle {{ request()->is('membership*') ? 'active' : '' }}" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Membership
                         </a>
-                        <ul class="dropdown-menu shadow-sm border-0">
-                            <li><a class="dropdown-item" href="{{ route('membership.info') }}">Membership Categories</a></li>
-                            <li><a class="dropdown-item text-primary fw-bold" href="{{ route('membership.apply') }}"><i class="bi bi-person-plus me-1"></i> Apply for Membership</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="{{ route('documents.index') }}">Club Documents</a></li>
+                        <ul class="dropdown-menu dropdown-menu-glass border-0">
+                            <li><a class="dropdown-item" href="{{ route('membership.info') }}"><i class="bi bi-award-fill text-warning"></i> Categories & Fees</a></li>
+                            <li><a class="dropdown-item fw-bold text-navy" href="{{ route('membership.apply') }}"><i class="bi bi-pencil-square text-warning"></i> Apply for Membership</a></li>
                         </ul>
                     </li>
 
@@ -132,20 +115,21 @@
                     </li>
                 </ul>
 
+                <!-- Action CTA Area -->
                 <div class="d-flex align-items-center gap-2 ms-lg-3 mt-3 mt-lg-0">
                     @auth
                         @if(auth()->user()->isAdmin())
-                            <a href="{{ route('admin.dashboard') }}" class="btn btn-club-primary btn-sm"><i class="bi bi-speedometer2 me-1"></i> Admin</a>
+                            <a href="{{ route('admin.dashboard') }}" class="btn btn-club-primary btn-sm px-3 py-1" style="font-size: 0.82rem;"><i class="bi bi-speedometer2 me-1"></i> Admin</a>
                         @else
-                            <a href="{{ route('member.dashboard') }}" class="btn btn-club-primary btn-sm"><i class="bi bi-person-circle me-1"></i> Dashboard</a>
+                            <a href="{{ route('member.dashboard') }}" class="btn btn-club-primary btn-sm px-3 py-1" style="font-size: 0.82rem;"><i class="bi bi-person-circle me-1"></i> Portal</a>
                         @endif
                         <form action="{{ route('logout') }}" method="POST" class="d-inline">
                             @csrf
-                            <button type="submit" class="btn btn-outline-danger btn-sm" title="Logout"><i class="bi bi-box-arrow-right"></i></button>
+                            <button type="submit" class="btn btn-outline-danger btn-sm p-1 px-2" title="Logout"><i class="bi bi-box-arrow-right"></i></button>
                         </form>
                     @else
-                        <a href="{{ route('login') }}" class="btn btn-club-primary btn-sm"><i class="bi bi-lock me-1"></i> Login</a>
-                        <a href="{{ route('membership.apply') }}" class="btn btn-club-gold btn-sm"><i class="bi bi-award me-1"></i> Join Club</a>
+                        <a href="{{ route('login') }}" class="btn btn-club-outline btn-sm px-3 py-1" style="font-size: 0.82rem;"><i class="bi bi-person me-1"></i> Login</a>
+                        <a href="{{ route('membership.apply') }}" class="btn btn-club-gold btn-sm px-3 py-1" style="font-size: 0.82rem;"><i class="bi bi-award me-1"></i> Join Club</a>
                     @endauth
                 </div>
             </div>
