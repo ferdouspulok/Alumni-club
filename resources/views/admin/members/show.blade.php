@@ -111,6 +111,18 @@
                         <td>{{ $member->spouse_name ?: 'N/A' }}</td>
                     </tr>
                     <tr>
+                        <th class="text-navy">Nominee's Name:</th>
+                        <td class="text-dark">{{ $member->nominee_name ?: 'N/A' }}</td>
+                    </tr>
+                    <tr>
+                        <th class="text-navy">Nationality:</th>
+                        <td>{{ $member->nationality ?: 'Bangladeshi' }}</td>
+                    </tr>
+                    <tr>
+                        <th class="text-navy">Mobile (WhatsApp):</th>
+                        <td>{{ $member->whatsapp_number ?: $member->mobile }}</td>
+                    </tr>
+                    <tr>
                         <th class="text-navy">Emergency Contact:</th>
                         <td>{{ $member->emergency_contact ?: 'N/A' }}</td>
                     </tr>
@@ -148,8 +160,29 @@
                         <td>{{ $member->permanent_address ?: 'N/A' }}, {{ $member->upazila }}, {{ $member->district }}</td>
                     </tr>
                     <tr>
-                        <th class="text-navy">Proposed By:</th>
-                        <td>{{ $member->proposed_by_name ?: 'Direct Application' }} @if($member->proposed_by_member_id) ({{ $member->proposed_by_member_id }}) @endif</td>
+                        <th class="text-navy">Proposed By (Founder):</th>
+                        <td>{{ $member->proposed_by_name ?: 'Direct Application' }} @if($member->proposed_by_member_id) <span class="badge bg-light text-dark border">ID: {{ $member->proposed_by_member_id }}</span> @endif</td>
+                    </tr>
+                    <tr>
+                        <th class="text-navy">Seconded By (Member):</th>
+                        <td>{{ $member->seconder_name ?: 'N/A' }} @if($member->seconder_member_id) <span class="badge bg-light text-dark border">ID: {{ $member->seconder_member_id }}</span> @endif</td>
+                    </tr>
+                    <tr>
+                        <th class="text-navy">Social Profiles:</th>
+                        <td>
+                            @if($member->facebook_profile)
+                                <a href="{{ Str::startsWith($member->facebook_profile, 'http') ? $member->facebook_profile : 'https://facebook.com/' . $member->facebook_profile }}" target="_blank" class="badge bg-primary text-decoration-none me-1"><i class="bi bi-facebook"></i> FB</a>
+                            @endif
+                            @if($member->instagram_profile)
+                                <a href="{{ Str::startsWith($member->instagram_profile, 'http') ? $member->instagram_profile : 'https://instagram.com/' . $member->instagram_profile }}" target="_blank" class="badge bg-danger text-decoration-none me-1"><i class="bi bi-instagram"></i> IG</a>
+                            @endif
+                            @if($member->linkedin_profile)
+                                <a href="{{ Str::startsWith($member->linkedin_profile, 'http') ? $member->linkedin_profile : 'https://linkedin.com/in/' . $member->linkedin_profile }}" target="_blank" class="badge bg-info text-decoration-none me-1"><i class="bi bi-linkedin"></i> IN</a>
+                            @endif
+                            @if(!$member->facebook_profile && !$member->instagram_profile && !$member->linkedin_profile)
+                                <span class="text-muted small">None provided</span>
+                            @endif
+                        </td>
                     </tr>
                     <tr>
                         <th class="text-navy">Approved By:</th>

@@ -9,13 +9,13 @@
     <!-- Favicon -->
     <link rel="icon" type="image/jpeg" href="{{ asset('images/logo.png') }}">
     
-    <!-- Google Fonts -->
+    <!-- Google Fonts: Cinzel (Regal Club Serif) & Plus Jakarta Sans (Modern Clean UI) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
     
     <!-- Bootstrap 5 CSS & Icons -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.php" rel="stylesheet" onerror="this.onerror=null;this.href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css';">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     
     <!-- Custom Club Theme CSS -->
@@ -28,9 +28,12 @@
     <div class="club-topbar py-1 d-none d-md-block">
         <div class="container d-flex justify-content-between align-items-center">
             <div class="d-flex align-items-center gap-3">
-                <span><i class="bi bi-geo-alt-fill text-warning me-1"></i> {{ \App\Models\Setting::get('club_address', 'Chatkhil, Noakhali, Bangladesh') }}</span>
-                <span><i class="bi bi-telephone-fill text-warning me-1"></i> {{ \App\Models\Setting::get('contact_phone', '+880 1819-234567') }}</span>
-                <span><i class="bi bi-envelope-fill text-warning me-1"></i> {{ \App\Models\Setting::get('contact_email', 'info@chatkhileliteclub.com') }}</span>
+                <span class="badge bg-warning text-dark px-2 py-1 fw-bold" style="font-size: 0.72rem; letter-spacing: 0.05em;">
+                    “Unity • Excellence • Service • Leadership”
+                </span>
+                <span><i class="bi bi-geo-alt-fill text-warning me-1"></i> Sky View Trade Valley, Naya Paltan, Dhaka</span>
+                <span><i class="bi bi-telephone-fill text-warning me-1"></i> +880 1805 561359</span>
+                <span><i class="bi bi-envelope-fill text-warning me-1"></i> info@celiteclub.com</span>
             </div>
             <div class="d-flex align-items-center gap-3">
                 <a href="{{ \App\Models\Setting::get('facebook_url', '#') }}" target="_blank" title="Facebook"><i class="bi bi-facebook"></i></a>
@@ -56,8 +59,8 @@
             <a class="navbar-brand" href="{{ route('home') }}">
                 <img src="{{ asset('images/logo.png') }}" alt="Chatkhil Elite Club Limited" class="brand-logo">
                 <div class="brand-text">
-                    <span class="brand-name">Chatkhil Elite Club</span>
-                    <span class="brand-tagline">Limited</span>
+                    <span class="brand-name">Chatkhil <span class="text-warning">ELITE</span> Club</span>
+                    <span class="brand-tagline">Ltd. • (Reg. under Companies Act, BD)</span>
                 </div>
             </a>
             
@@ -223,29 +226,35 @@
                 </div>
 
                 <div class="col-lg-3 col-md-6">
-                    <h5>Secretariat</h5>
+                    <h5>Official Secretariat</h5>
                     <p class="small mb-2">
-                        <i class="bi bi-geo-alt text-warning me-2"></i>
-                        {{ \App\Models\Setting::get('club_address', 'Elite Bhaban, Main Road, Chatkhil, Noakhali - 3870, Bangladesh') }}
+                        <i class="bi bi-geo-alt-fill text-warning me-2"></i>
+                        <strong>Registered Office:</strong><br>
+                        Sky View Trade Valley, B-6, 66/1 (VIP Road), Naya Paltan, Dhaka-1000.
                     </p>
                     <p class="small mb-2">
-                        <i class="bi bi-telephone text-warning me-2"></i>
-                        {{ \App\Models\Setting::get('contact_phone', '+880 1819-234567') }}
+                        <i class="bi bi-pin-map-fill text-warning me-2"></i>
+                        <strong>Chatkhil Hub:</strong> Main Road, Chatkhil, Noakhali.
                     </p>
                     <p class="small mb-2">
-                        <i class="bi bi-envelope text-warning me-2"></i>
-                        {{ \App\Models\Setting::get('contact_email', 'info@chatkhileliteclub.com') }}
+                        <i class="bi bi-telephone-fill text-warning me-2"></i>
+                        +880 1805 561359, +880 1805 561361<br>
+                        <span class="ms-4 text-light-50">+880 1805 561363, +880 1805 561634</span>
+                    </p>
+                    <p class="small mb-2">
+                        <i class="bi bi-envelope-fill text-warning me-2"></i>
+                        <a href="mailto:info@celiteclub.com" class="text-warning">info@celiteclub.com</a>
                     </p>
                     <p class="small mb-0">
-                        <i class="bi bi-clock text-warning me-2"></i>
-                        {{ \App\Models\Setting::get('office_hours', 'Sat - Thu: 10 AM - 9 PM') }}
+                        <i class="bi bi-globe text-warning me-2"></i>
+                        <span class="text-light-50">www.celiteclub.com</span>
                     </p>
                 </div>
             </div>
 
             <div class="club-footer-bottom d-flex flex-column flex-md-row justify-content-between align-items-center">
                 <p class="mb-2 mb-md-0">
-                    &copy; {{ date('Y') }} <strong>Chatkhil Elite Club Limited</strong>. All rights reserved.
+                    &copy; {{ date('Y') }} <strong>Chatkhil ELITE Club Ltd.</strong> (Registered under Companies Act / Applicable Laws of Bangladesh)
                 </p>
                 <div class="d-flex gap-3">
                     <a href="{{ route('about.constitution') }}" class="small">By-Laws</a>

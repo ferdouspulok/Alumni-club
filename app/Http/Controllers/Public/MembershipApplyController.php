@@ -31,13 +31,16 @@ class MembershipApplyController extends Controller
             'father_name' => 'nullable|string|max:150',
             'mother_name' => 'nullable|string|max:150',
             'spouse_name' => 'nullable|string|max:150',
+            'nominee_name' => 'nullable|string|max:150',
             'date_of_birth' => 'nullable|date',
-            'gender' => 'required|in:male,female,other',
+            'nationality' => 'nullable|string|max:100',
+            'gender' => 'nullable|in:male,female,other',
             'blood_group' => 'nullable|string|max:10',
             'mobile' => 'required|string|max:30',
+            'whatsapp_number' => 'nullable|string|max:30',
             'emergency_contact' => 'nullable|string|max:30',
             'email' => 'nullable|email|max:150',
-            'nid_or_passport' => 'nullable|string|max:50',
+            'nid_or_passport' => 'nullable|string|max:100',
             'present_address' => 'nullable|string',
             'permanent_address' => 'nullable|string',
             'district' => 'nullable|string|max:100',
@@ -45,8 +48,13 @@ class MembershipApplyController extends Controller
             'profession' => 'nullable|string|max:150',
             'organization' => 'nullable|string|max:150',
             'designation' => 'nullable|string|max:150',
+            'facebook_profile' => 'nullable|string|max:255',
+            'instagram_profile' => 'nullable|string|max:255',
+            'linkedin_profile' => 'nullable|string|max:255',
             'proposed_by_name' => 'nullable|string|max:150',
             'proposed_by_member_id' => 'nullable|string|max:50',
+            'seconder_name' => 'nullable|string|max:150',
+            'seconder_member_id' => 'nullable|string|max:50',
             'photo' => 'nullable|image|mimes:jpeg,png,jpg|max:3072',
             'is_public_directory' => 'nullable|boolean',
         ]);
@@ -58,12 +66,15 @@ class MembershipApplyController extends Controller
             $validated['photo'] = $filename;
         }
 
+        $validated['gender'] = $validated['gender'] ?? 'male';
+        $validated['nationality'] = $validated['nationality'] ?? 'Bangladeshi';
         $validated['status'] = 'pending';
         $validated['is_public_directory'] = $request->has('is_public_directory');
 
-        Member::create($validated);
+        $member = Member::create($validated);
+        $appNo = 'CEC-APP-' . str_pad($member->id, 5, '0', STR_PAD_LEFT);
 
         return redirect()->route('membership.apply')
-            ->with('success', 'Thank you! Your membership application has been submitted successfully to Chatkhil Elite Club Limited. Our Membership Scrutiny Committee will review your details.');
+            ->with('success', 'Thank you! Your membership application has been submitted successfully to Chatkhil Elite Club Limited. Your Application Reference is ' . $appNo . '. Our Membership Scrutiny Committee and Club Authority will review your application according to Club policies.');
     }
 }

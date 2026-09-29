@@ -52,8 +52,28 @@
                 </div>
 
                 <div class="col-md-6">
+                    <label class="form-label small fw-semibold">WhatsApp Number</label>
+                    <input type="text" name="whatsapp_number" class="form-control" value="{{ old('whatsapp_number', $member->whatsapp_number) }}">
+                </div>
+
+                <div class="col-md-6">
                     <label class="form-label small fw-semibold">Email Address</label>
                     <input type="email" name="email" class="form-control" value="{{ old('email', $member->email) }}">
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label small fw-semibold">Nominee's Name</label>
+                    <input type="text" name="nominee_name" class="form-control" value="{{ old('nominee_name', $member->nominee_name) }}">
+                </div>
+
+                <div class="col-md-3">
+                    <label class="form-label small fw-semibold">Date of Birth</label>
+                    <input type="date" name="date_of_birth" class="form-control" value="{{ old('date_of_birth', $member->date_of_birth ? $member->date_of_birth->format('Y-m-d') : '') }}">
+                </div>
+
+                <div class="col-md-3">
+                    <label class="form-label small fw-semibold">Nationality</label>
+                    <input type="text" name="nationality" class="form-control" value="{{ old('nationality', $member->nationality ?? 'Bangladeshi') }}">
                 </div>
 
                 <div class="col-md-3">
@@ -75,6 +95,16 @@
                     </select>
                 </div>
 
+                <div class="col-md-6">
+                    <label class="form-label small fw-semibold">NID / Passport / Driving License</label>
+                    <input type="text" name="nid_or_passport" class="form-control" value="{{ old('nid_or_passport', $member->nid_or_passport) }}">
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label small fw-semibold">Emergency Contact</label>
+                    <input type="text" name="emergency_contact" class="form-control" value="{{ old('emergency_contact', $member->emergency_contact) }}">
+                </div>
+
                 <div class="col-md-4">
                     <label class="form-label small fw-semibold">Profession</label>
                     <input type="text" name="profession" class="form-control" value="{{ old('profession', $member->profession) }}">
@@ -88,6 +118,41 @@
                 <div class="col-md-4">
                     <label class="form-label small fw-semibold">Designation</label>
                     <input type="text" name="designation" class="form-control" value="{{ old('designation', $member->designation) }}">
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label small fw-semibold">Proposed By (Founder Member)</label>
+                    <input type="text" name="proposed_by_name" class="form-control" value="{{ old('proposed_by_name', $member->proposed_by_name) }}">
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label small fw-semibold">Proposer Member ID</label>
+                    <input type="text" name="proposed_by_member_id" class="form-control" value="{{ old('proposed_by_member_id', $member->proposed_by_member_id) }}">
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label small fw-semibold">Seconder Name (Existing Member)</label>
+                    <input type="text" name="seconder_name" class="form-control" value="{{ old('seconder_name', $member->seconder_name) }}">
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label small fw-semibold">Seconder Member ID</label>
+                    <input type="text" name="seconder_member_id" class="form-control" value="{{ old('seconder_member_id', $member->seconder_member_id) }}">
+                </div>
+
+                <div class="col-md-4">
+                    <label class="form-label small fw-semibold">Facebook Profile</label>
+                    <input type="text" name="facebook_profile" class="form-control" value="{{ old('facebook_profile', $member->facebook_profile) }}" placeholder="Username or Link">
+                </div>
+
+                <div class="col-md-4">
+                    <label class="form-label small fw-semibold">Instagram Profile</label>
+                    <input type="text" name="instagram_profile" class="form-control" value="{{ old('instagram_profile', $member->instagram_profile) }}" placeholder="Username or Link">
+                </div>
+
+                <div class="col-md-4">
+                    <label class="form-label small fw-semibold">LinkedIn Profile</label>
+                    <input type="text" name="linkedin_profile" class="form-control" value="{{ old('linkedin_profile', $member->linkedin_profile) }}" placeholder="Username or Link">
                 </div>
 
                 <div class="col-md-6">
