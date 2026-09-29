@@ -27,11 +27,12 @@
                                 @csrf
 
                                 <div class="mb-3">
-                                    <label class="form-label small fw-semibold text-navy">Email Address or Mobile Number</label>
+                                    <label class="form-label small fw-semibold text-navy">Member ID, Mobile Number, or Email</label>
                                     <div class="input-group">
-                                        <span class="input-group-text bg-light"><i class="bi bi-person text-warning"></i></span>
-                                        <input type="text" name="login" id="login_input" class="form-control" placeholder="admin@chatkhil.club or mobile" value="{{ old('login') }}" required autofocus>
+                                        <span class="input-group-text bg-light"><i class="bi bi-person-badge text-warning"></i></span>
+                                        <input type="text" name="login" id="login_input" class="form-control" placeholder="e.g. CEC-2026-0001, 018XXXXXXXX, or Email" value="{{ old('login') }}" required autofocus>
                                     </div>
+                                    <div class="form-text small" style="font-size: 0.74rem;">Approved members can log in using their assigned Member ID or Mobile.</div>
                                 </div>
 
                                 <div class="mb-3">
@@ -42,6 +43,11 @@
                                     </div>
                                 </div>
 
+                                <div class="p-2 px-3 rounded-3 small mb-3" style="background: rgba(197, 160, 89, 0.12); border: 1px dashed rgba(197, 160, 89, 0.5); font-size: 0.8rem; color: #1e293b;">
+                                    <i class="bi bi-shield-check text-warning me-1"></i>
+                                    <strong>New Member Access:</strong> Initial temporary password is <code>password123</code>. You can change your password inside your portal.
+                                </div>
+
                                 <div class="d-flex justify-content-between align-items-center mb-4 small">
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" name="remember" id="remember">
@@ -50,8 +56,8 @@
                                     <a href="{{ route('contact') }}" class="text-decoration-none text-muted">Need help?</a>
                                 </div>
 
-                                <button type="submit" class="btn btn-club-gold w-100 fw-bold py-2 mb-3">
-                                    <i class="bi bi-box-arrow-in-right me-1"></i> Sign In to Portal
+                                <button type="submit" class="btn btn-club-gold w-100 fw-bold py-2 mb-3 shadow-sm">
+                                    <i class="bi bi-box-arrow-in-right me-1"></i> Sign In to Member Portal
                                 </button>
                             </form>
 

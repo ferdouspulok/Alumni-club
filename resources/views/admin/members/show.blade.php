@@ -64,6 +64,30 @@
             @endif
         </div>
 
+        @if($member->status === 'approved')
+            <div class="mt-3 p-3 rounded-3 border small" style="background: rgba(246, 248, 251, 0.95); border-left: 4px solid var(--club-gold) !important;">
+                <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-2">
+                    <div>
+                        <strong class="text-navy"><i class="bi bi-key-fill text-warning me-1"></i> Member Portal Login Access:</strong>
+                        <span class="ms-1 text-muted">The member can log into their private dashboard using any of:</span>
+                        <div class="mt-2 d-flex flex-wrap gap-2 align-items-center">
+                            <span class="badge bg-white text-navy border font-monospace px-2 py-1"><i class="bi bi-person-badge text-warning me-1"></i> Member ID: <strong>{{ $member->member_id }}</strong></span>
+                            <span class="badge bg-white text-navy border px-2 py-1"><i class="bi bi-telephone text-warning me-1"></i> Mobile: <strong>{{ $member->mobile }}</strong></span>
+                            @if($member->email)
+                                <span class="badge bg-white text-navy border px-2 py-1"><i class="bi bi-envelope text-warning me-1"></i> Email: <strong>{{ $member->email }}</strong></span>
+                            @endif
+                            <span class="badge bg-warning text-dark px-2 py-1"><i class="bi bi-lock me-1"></i> Default Password: <strong>password123</strong></span>
+                        </div>
+                    </div>
+                    <div>
+                        <span class="badge bg-success-subtle text-success border border-success-subtle px-3 py-2">
+                            <i class="bi bi-check-circle-fill me-1"></i> Account Active
+                        </span>
+                    </div>
+                </div>
+            </div>
+        @endif
+
         @if($member->status === 'rejected' && $member->rejection_reason)
             <div class="alert alert-danger mt-3 mb-0 small">
                 <strong>Rejection Reason:</strong> {{ $member->rejection_reason }}
