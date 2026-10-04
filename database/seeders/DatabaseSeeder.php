@@ -135,44 +135,252 @@ class DatabaseSeeder extends Seeder
 
         // 4. Core CMS Pages
         Page::create([
-            'title' => 'About Chatkhil Elite Club Limited',
+            'title' => 'About Chatkhil Elite Club Ltd.',
             'slug' => 'about-us',
-            'subtitle' => 'Fostering brotherhood, community excellence and social welfare since inception.',
-            'content' => '<h3>Welcome to Chatkhil Elite Club Limited</h3>
-            <p>Chatkhil Elite Club Limited is a premier social and community club representing the professionals, entrepreneurs, cultural patrons, and community leaders of Chatkhil Upazila, Noakhali District, Bangladesh.</p>
-            <p>The club was founded to provide a non-political, forward-looking fellowship platform that brings together accomplished individuals dedicated to mutual growth, social enrichment, recreational excellence, and noble humanitarian causes for Chatkhil and its surrounding areas.</p>
-            <p>Over the years, the club has distinguished itself through organizing charitable aid, scholarships for underprivileged meritorious students, health camps, relief operations during monsoon floods, grand cultural celebrations, annual sports tournaments, and scholarly discussions.</p>',
-            'meta_title' => 'About Chatkhil Elite Club Limited | Noakhali, Bangladesh',
-            'meta_description' => 'Learn about the history, purpose, and community leadership of Chatkhil Elite Club Limited, Noakhali, Bangladesh.',
+            'subtitle' => 'A community-driven social organization dedicated to friendship, responsibility, and collective well-being.',
+            'content' => '<div class="mb-4">
+                <p class="lead" style="font-size: 1.15rem; color: #1e293b; line-height: 1.85;">
+                    <strong>Chatkhil Elite Club Ltd.</strong> is a community-driven social organization dedicated to bringing together individuals who share a common commitment to social responsibility, personal development, friendship, and community well-being.
+                </p>
+                <p style="color: #475569; line-height: 1.85;">
+                    Our club provides a platform where members can connect, exchange ideas, participate in meaningful activities, and contribute positively to society. Through social initiatives, cultural programs, recreational activities, educational efforts, and community engagement, we aim to create a stronger and more connected community.
+                </p>
+                <div class="p-3 my-3 rounded-3 border" style="background: rgba(246, 248, 251, 0.95); border-left: 4px solid var(--liquid-gold) !important;">
+                    <p class="mb-0 fw-semibold text-navy fst-italic">
+                        “We believe that when people come together with positive intentions and collective effort, meaningful and lasting change can be created.”
+                    </p>
+                </div>
+            </div>
+
+            <div class="row g-4 mb-4">
+                <div class="col-md-6">
+                    <div class="p-4 rounded-4 h-100 border shadow-sm" style="background: #ffffff;">
+                        <h4 class="font-serif text-navy mb-2"><i class="bi bi-compass text-warning me-2"></i>Our Mission</h4>
+                        <p class="text-muted small mb-3">Our mission is to build a vibrant and responsible community by:</p>
+                        <ul class="list-unstyled text-muted small" style="line-height: 1.85;">
+                            <li class="mb-2"><i class="bi bi-check2-circle text-warning me-2"></i>Promoting friendship, unity, and mutual respect among members.</li>
+                            <li class="mb-2"><i class="bi bi-check2-circle text-warning me-2"></i>Organizing meaningful social, cultural, educational, and recreational activities.</li>
+                            <li class="mb-2"><i class="bi bi-check2-circle text-warning me-2"></i>Encouraging volunteerism and community service.</li>
+                            <li class="mb-2"><i class="bi bi-check2-circle text-warning me-2"></i>Supporting initiatives that contribute to the welfare of people and the local community.</li>
+                            <li class="mb-2"><i class="bi bi-check2-circle text-warning me-2"></i>Creating opportunities for personal growth, networking, and leadership.</li>
+                            <li class="mb-0"><i class="bi bi-check2-circle text-warning me-2"></i>Developing a positive and inclusive environment for members of all backgrounds.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="p-4 rounded-4 h-100 border shadow-sm" style="background: #ffffff;">
+                        <h4 class="font-serif text-navy mb-2"><i class="bi bi-eye text-warning me-2"></i>Our Vision</h4>
+                        <p style="color: #475569; line-height: 1.85;">
+                            Our vision is to establish <strong>Chatkhil Elite Club Ltd.</strong> as a trusted and respected community platform where people come together to build relationships, develop their potential, serve society, and create positive change.
+                        </p>
+                        <div class="p-3 rounded-3 mt-3" style="background: rgba(197, 160, 89, 0.1); border: 1px solid rgba(197, 160, 89, 0.3);">
+                            <p class="mb-0 text-navy fw-semibold small">
+                                <i class="bi bi-stars text-warning me-1"></i> We envision a community that is <strong>connected, responsible, compassionate, progressive, and united</strong>.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <h4 class="font-serif text-navy mb-3"><i class="bi bi-gem text-warning me-2"></i>Our Core Values</h4>
+                <div class="row g-3">
+                    <div class="col-md-4"><div class="p-3 rounded-3 border bg-light h-100"><h6 class="fw-bold text-navy mb-1"><i class="bi bi-shield-check text-warning me-1"></i>Integrity</h6><p class="small text-muted mb-0">We believe in honesty, transparency, and responsible conduct.</p></div></div>
+                    <div class="col-md-4"><div class="p-3 rounded-3 border bg-light h-100"><h6 class="fw-bold text-navy mb-1"><i class="bi bi-people text-warning me-1"></i>Unity</h6><p class="small text-muted mb-0">We value teamwork and believe that collective effort creates greater impact.</p></div></div>
+                    <div class="col-md-4"><div class="p-3 rounded-3 border bg-light h-100"><h6 class="fw-bold text-navy mb-1"><i class="bi bi-heart text-warning me-1"></i>Respect</h6><p class="small text-muted mb-0">We respect every member and value diversity of ideas and backgrounds.</p></div></div>
+                    <div class="col-md-4"><div class="p-3 rounded-3 border bg-light h-100"><h6 class="fw-bold text-navy mb-1"><i class="bi bi-hand-thumbs-up text-warning me-1"></i>Service</h6><p class="small text-muted mb-0">We encourage members to contribute their time, skills, and resources for the benefit of society.</p></div></div>
+                    <div class="col-md-4"><div class="p-3 rounded-3 border bg-light h-100"><h6 class="fw-bold text-navy mb-1"><i class="bi bi-award text-warning me-1"></i>Leadership</h6><p class="small text-muted mb-0">We promote responsible leadership, initiative, and personal development.</p></div></div>
+                    <div class="col-md-4"><div class="p-3 rounded-3 border bg-light h-100"><h6 class="fw-bold text-navy mb-1"><i class="bi bi-diagram-2 text-warning me-1"></i>Friendship</h6><p class="small text-muted mb-0">We believe strong relationships are the foundation of a strong community.</p></div></div>
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <h4 class="font-serif text-navy mb-3"><i class="bi bi-grid-fill text-warning me-2"></i>Our Activities</h4>
+                <div class="row g-3">
+                    <div class="col-md-6"><div class="p-3 rounded-3 border h-100 bg-white"><h6 class="fw-bold text-navy mb-1"><i class="bi bi-heart-pulse-fill text-danger me-2"></i>Social Welfare</h6><p class="small text-muted mb-0">We organize and support initiatives aimed at helping people in need and contributing to community welfare.</p></div></div>
+                    <div class="col-md-6"><div class="p-3 rounded-3 border h-100 bg-white"><h6 class="fw-bold text-navy mb-1"><i class="bi bi-people-fill text-primary me-2"></i>Community Service</h6><p class="small text-muted mb-0">Our members participate in volunteer activities and community-focused programs designed to create a positive social impact.</p></div></div>
+                    <div class="col-md-6"><div class="p-3 rounded-3 border h-100 bg-white"><h6 class="fw-bold text-navy mb-1"><i class="bi bi-palette-fill text-warning me-2"></i>Cultural Programs</h6><p class="small text-muted mb-0">We arrange cultural events, celebrations, and programs that encourage creativity and help preserve our shared cultural values.</p></div></div>
+                    <div class="col-md-6"><div class="p-3 rounded-3 border h-100 bg-white"><h6 class="fw-bold text-navy mb-1"><i class="bi bi-mortarboard-fill text-success me-2"></i>Educational Initiatives</h6><p class="small text-muted mb-0">We support educational awareness, knowledge-sharing, seminars, workshops, and activities that encourage learning and personal development.</p></div></div>
+                    <div class="col-md-6"><div class="p-3 rounded-3 border h-100 bg-white"><h6 class="fw-bold text-navy mb-1"><i class="bi bi-trophy-fill text-warning me-2"></i>Sports & Recreation</h6><p class="small text-muted mb-0">We organize sports, recreational events, and friendly competitions to promote healthy lifestyles, teamwork, and friendship.</p></div></div>
+                    <div class="col-md-6"><div class="p-3 rounded-3 border h-100 bg-white"><h6 class="fw-bold text-navy mb-1"><i class="bi bi-share-fill text-info me-2"></i>Networking & Fellowship</h6><p class="small text-muted mb-0">The club provides opportunities for members to meet, build meaningful relationships, exchange ideas, and develop professional and social networks.</p></div></div>
+                    <div class="col-12"><div class="p-3 rounded-3 border bg-white"><h6 class="fw-bold text-navy mb-1"><i class="bi bi-gift-fill text-danger me-2"></i>Charity & Support</h6><p class="small text-muted mb-0">We may organize fundraising and assistance programs for deserving individuals and communities, subject to the club\'s policies and available resources.</p></div></div>
+                </div>
+            </div>
+
+            <div class="p-4 rounded-4 border" style="background: #f8fafc; border-left: 5px solid var(--liquid-gold) !important;">
+                <h4 class="font-serif text-navy mb-2"><i class="bi bi-patch-question-fill text-warning me-2"></i>Why Join Chatkhil Elite Club?</h4>
+                <p class="text-muted small mb-3">Being a member of Chatkhil Elite Club Ltd. means becoming part of a community where you can:</p>
+                <div class="row g-2 mb-3">
+                    <div class="col-md-6 small"><i class="bi bi-check-circle-fill text-success me-2"></i>Build meaningful friendships and connections.</div>
+                    <div class="col-md-6 small"><i class="bi bi-check-circle-fill text-success me-2"></i>Participate in social and community activities.</div>
+                    <div class="col-md-6 small"><i class="bi bi-check-circle-fill text-success me-2"></i>Develop leadership and organizational skills.</div>
+                    <div class="col-md-6 small"><i class="bi bi-check-circle-fill text-success me-2"></i>Share knowledge, ideas, and experiences.</div>
+                    <div class="col-md-6 small"><i class="bi bi-check-circle-fill text-success me-2"></i>Contribute to worthwhile initiatives.</div>
+                    <div class="col-md-6 small"><i class="bi bi-check-circle-fill text-success me-2"></i>Enjoy cultural, recreational, and social events.</div>
+                    <div class="col-12 small"><i class="bi bi-check-circle-fill text-success me-2"></i>Become part of a positive and supportive community.</div>
+                </div>
+                <div class="pt-3 border-top">
+                    <h5 class="font-serif text-navy mb-1">Membership</h5>
+                    <p class="fw-bold text-navy mb-1">Become a part of our community.</p>
+                    <p class="small text-muted mb-2">
+                        Chatkhil Elite Club Ltd. welcomes individuals who believe in friendship, community, personal development, and social responsibility. Whether you want to participate in community initiatives, meet new people, develop your network, or simply become part of an active and positive community, there is a place for you at Chatkhil Elite Club.
+                    </p>
+                    <p class="fw-bold text-navy mb-3">Join us. Connect. Contribute. Grow together.</p>
+                </div>
+            </div>',
+            'meta_title' => 'About Chatkhil Elite Club Ltd. | Noakhali, Bangladesh',
+            'meta_description' => 'A community-driven social organization dedicated to bringing together individuals who share a common commitment to social responsibility, personal development, friendship, and community well-being.',
         ]);
 
         Page::create([
-            'title' => 'Mission & Vision',
+            'title' => 'Our Mission & Vision',
             'slug' => 'mission-vision',
-            'subtitle' => 'Our guiding compass towards sustainable social leadership.',
-            'content' => '<h3>Our Vision</h3>
-            <p>To be recognized as the most distinguished, ethical, and impactful social club in the greater Noakhali region, inspiring holistic community transformation through enlightened fellowship.</p>
-            <h3>Our Mission</h3>
-            <ul>
-                <li><strong>Fellowship & Solidarity:</strong> To cultivate a vibrant sanctuary where members connect, exchange ideas, and build lifelong bonds of brotherhood.</li>
-                <li><strong>Community Empowerment:</strong> To spearhead humanitarian initiatives, disaster relief, education stipends, and medical assistance for the people of Chatkhil.</li>
-                <li><strong>Cultural Preservation:</strong> To patronize the rich heritage, arts, literature, and sports of Bangladesh.</li>
-                <li><strong>Youth Guidance:</strong> To mentor emerging leaders and entrepreneurs from our locality towards national and global success.</li>
-            </ul>',
+            'subtitle' => 'Building a vibrant, responsible, and united community.',
+            'content' => '<div class="row g-4 mb-4">
+                <div class="col-md-6">
+                    <div class="p-4 rounded-4 h-100 border shadow-sm" style="background: #ffffff; border-top: 4px solid var(--liquid-gold) !important;">
+                        <h4 class="font-serif text-navy mb-2"><i class="bi bi-compass text-warning me-2"></i>Our Mission</h4>
+                        <p class="text-muted small mb-3">Our mission is to build a vibrant and responsible community by:</p>
+                        <ul class="list-unstyled text-muted small" style="line-height: 1.85;">
+                            <li class="mb-2"><i class="bi bi-check2-circle text-warning me-2"></i>Promoting friendship, unity, and mutual respect among members.</li>
+                            <li class="mb-2"><i class="bi bi-check2-circle text-warning me-2"></i>Organizing meaningful social, cultural, educational, and recreational activities.</li>
+                            <li class="mb-2"><i class="bi bi-check2-circle text-warning me-2"></i>Encouraging volunteerism and community service.</li>
+                            <li class="mb-2"><i class="bi bi-check2-circle text-warning me-2"></i>Supporting initiatives that contribute to the welfare of people and the local community.</li>
+                            <li class="mb-2"><i class="bi bi-check2-circle text-warning me-2"></i>Creating opportunities for personal growth, networking, and leadership.</li>
+                            <li class="mb-0"><i class="bi bi-check2-circle text-warning me-2"></i>Developing a positive and inclusive environment for members of all backgrounds.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="p-4 rounded-4 h-100 border shadow-sm" style="background: #ffffff; border-top: 4px solid var(--liquid-navy-deep) !important;">
+                        <h4 class="font-serif text-navy mb-2"><i class="bi bi-eye text-warning me-2"></i>Our Vision</h4>
+                        <p style="color: #475569; line-height: 1.85;">
+                            Our vision is to establish <strong>Chatkhil Elite Club Ltd.</strong> as a trusted and respected community platform where people come together to build relationships, develop their potential, serve society, and create positive change.
+                        </p>
+                        <div class="p-3 rounded-3 mt-4" style="background: rgba(197, 160, 89, 0.12); border: 1px solid rgba(197, 160, 89, 0.3);">
+                            <p class="mb-0 text-navy fw-semibold small">
+                                <i class="bi bi-stars text-warning me-1"></i> We envision a community that is <strong>connected, responsible, compassionate, progressive, and united</strong>.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-4">
+                <h4 class="font-serif text-navy mb-3"><i class="bi bi-gem text-warning me-2"></i>Our Core Values</h4>
+                <div class="row g-3">
+                    <div class="col-md-4"><div class="p-3 rounded-3 border bg-light h-100"><h6 class="fw-bold text-navy mb-1"><i class="bi bi-shield-check text-warning me-1"></i>Integrity</h6><p class="small text-muted mb-0">We believe in honesty, transparency, and responsible conduct.</p></div></div>
+                    <div class="col-md-4"><div class="p-3 rounded-3 border bg-light h-100"><h6 class="fw-bold text-navy mb-1"><i class="bi bi-people text-warning me-1"></i>Unity</h6><p class="small text-muted mb-0">We value teamwork and believe that collective effort creates greater impact.</p></div></div>
+                    <div class="col-md-4"><div class="p-3 rounded-3 border bg-light h-100"><h6 class="fw-bold text-navy mb-1"><i class="bi bi-heart text-warning me-1"></i>Respect</h6><p class="small text-muted mb-0">We respect every member and value diversity of ideas and backgrounds.</p></div></div>
+                    <div class="col-md-4"><div class="p-3 rounded-3 border bg-light h-100"><h6 class="fw-bold text-navy mb-1"><i class="bi bi-hand-thumbs-up text-warning me-1"></i>Service</h6><p class="small text-muted mb-0">We encourage members to contribute their time, skills, and resources for the benefit of society.</p></div></div>
+                    <div class="col-md-4"><div class="p-3 rounded-3 border bg-light h-100"><h6 class="fw-bold text-navy mb-1"><i class="bi bi-award text-warning me-1"></i>Leadership</h6><p class="small text-muted mb-0">We promote responsible leadership, initiative, and personal development.</p></div></div>
+                    <div class="col-md-4"><div class="p-3 rounded-3 border bg-light h-100"><h6 class="fw-bold text-navy mb-1"><i class="bi bi-diagram-2 text-warning me-1"></i>Friendship</h6><p class="small text-muted mb-0">We believe strong relationships are the foundation of a strong community.</p></div></div>
+                </div>
+            </div>',
+            'meta_title' => 'Our Mission & Vision | Chatkhil Elite Club Ltd.',
+            'meta_description' => 'Our mission is to build a vibrant and responsible community. Our vision is to establish Chatkhil Elite Club Ltd. as a trusted and respected community platform.',
         ]);
 
         Page::create([
-            'title' => "President's Message",
+            'title' => "Chairman's Message",
             'slug' => 'president-message',
-            'subtitle' => 'A warm greeting from the Executive Leadership.',
-            'content' => '<p><strong>Assalamu Alaikum wa Rahmatullah,</strong></p>
-            <p>It is my utmost honor and pleasure to welcome you to the official web portal of <strong>Chatkhil Elite Club Limited</strong>.</p>
-            <p>Our beloved Chatkhil has always been blessed with resilient, accomplished, and generous individuals who have left significant marks across business, public administration, medicine, engineering, law, and academia. Chatkhil Elite Club was envisioned as our collective home — where mutual respect and unity translate into meaningful deeds for our motherland.</p>
-            <p>As we march forward with our digital platform, we invite all eligible citizens and expatriates from Chatkhil to join our fellowship, actively participate in our events, and contribute toward a prosperous, educated, and progressive community.</p>
-            <p>May Almighty Allah bless our collective endeavors.</p>
-            <p>Warmest regards,<br>
-            <strong>Alhaj Md. Faruk Hossain</strong><br>
-            President, Chatkhil Elite Club Limited</p>',
+            'subtitle' => 'A message of unity, friendship, and collective effort.',
+            'content' => '<div class="p-4 p-md-5 rounded-4 border shadow-sm mb-4" style="background: #ffffff; border-left: 5px solid var(--liquid-gold) !important;">
+                <h4 class="font-serif text-navy mb-3"><i class="bi bi-chat-quote-fill text-warning me-2"></i>Welcome to Chatkhil Elite Club Ltd.</h4>
+                <p style="color: #334155; line-height: 1.9; font-size: 1.08rem;">
+                    Our club was founded on the belief that strong communities are built through friendship, cooperation, mutual respect, and a willingness to contribute.
+                </p>
+                <p style="color: #334155; line-height: 1.9; font-size: 1.08rem;">
+                    We are committed to creating a platform where our members can connect with one another, enjoy meaningful activities, develop their potential, and contribute positively to society.
+                </p>
+                <p style="color: #334155; line-height: 1.9; font-size: 1.08rem;">
+                    I invite all our members and well-wishers to work together with enthusiasm, integrity, and a spirit of unity as we continue to build a stronger and more vibrant community.
+                </p>
+                <div class="p-3 my-4 rounded-3" style="background: rgba(197, 160, 89, 0.12); border: 1px solid rgba(197, 160, 89, 0.35);">
+                    <p class="mb-0 fw-bold text-navy font-serif fs-5">
+                        “Together, we can connect, contribute, and create a lasting positive Impact.”
+                    </p>
+                </div>
+                <div class="mt-4 pt-3 border-top text-end">
+                    <h5 class="font-serif fw-bold text-navy mb-0">Chairman</h5>
+                    <span class="text-muted small">Chatkhil Elite Club Ltd.</span>
+                </div>
+            </div>',
+            'meta_title' => "Chairman's Message | Chatkhil Elite Club Ltd.",
+            'meta_description' => "Welcome to Chatkhil Elite Club Ltd. Our club was founded on the belief that strong communities are built through friendship, cooperation, mutual respect, and a willingness to contribute.",
+        ]);
+
+        Page::create([
+            'title' => 'Our Activities',
+            'slug' => 'activities',
+            'subtitle' => 'Social welfare, community service, cultural programs, sports & networking.',
+            'content' => '<div class="row g-4 mb-4">
+                <div class="col-md-6">
+                    <div class="p-4 rounded-4 border h-100 bg-white shadow-sm">
+                        <div class="d-flex align-items-center gap-3 mb-2">
+                            <div class="p-2 rounded-3 bg-danger bg-opacity-10 text-danger fs-4"><i class="bi bi-heart-pulse-fill"></i></div>
+                            <h5 class="fw-bold text-navy mb-0">Social Welfare</h5>
+                        </div>
+                        <p class="text-muted small mb-0" style="line-height: 1.8;">We organize and support initiatives aimed at helping people in need and contributing to community welfare.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="p-4 rounded-4 border h-100 bg-white shadow-sm">
+                        <div class="d-flex align-items-center gap-3 mb-2">
+                            <div class="p-2 rounded-3 bg-primary bg-opacity-10 text-primary fs-4"><i class="bi bi-people-fill"></i></div>
+                            <h5 class="fw-bold text-navy mb-0">Community Service</h5>
+                        </div>
+                        <p class="text-muted small mb-0" style="line-height: 1.8;">Our members participate in volunteer activities and community-focused programs designed to create a positive social impact.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="p-4 rounded-4 border h-100 bg-white shadow-sm">
+                        <div class="d-flex align-items-center gap-3 mb-2">
+                            <div class="p-2 rounded-3 bg-warning bg-opacity-10 text-warning fs-4"><i class="bi bi-palette-fill"></i></div>
+                            <h5 class="fw-bold text-navy mb-0">Cultural Programs</h5>
+                        </div>
+                        <p class="text-muted small mb-0" style="line-height: 1.8;">We arrange cultural events, celebrations, and programs that encourage creativity and help preserve our shared cultural values.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="p-4 rounded-4 border h-100 bg-white shadow-sm">
+                        <div class="d-flex align-items-center gap-3 mb-2">
+                            <div class="p-2 rounded-3 bg-success bg-opacity-10 text-success fs-4"><i class="bi bi-mortarboard-fill"></i></div>
+                            <h5 class="fw-bold text-navy mb-0">Educational Initiatives</h5>
+                        </div>
+                        <p class="text-muted small mb-0" style="line-height: 1.8;">We support educational awareness, knowledge-sharing, seminars, workshops, and activities that encourage learning and personal development.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="p-4 rounded-4 border h-100 bg-white shadow-sm">
+                        <div class="d-flex align-items-center gap-3 mb-2">
+                            <div class="p-2 rounded-3 bg-warning bg-opacity-10 text-warning fs-4"><i class="bi bi-trophy-fill"></i></div>
+                            <h5 class="fw-bold text-navy mb-0">Sports & Recreation</h5>
+                        </div>
+                        <p class="text-muted small mb-0" style="line-height: 1.8;">We organize sports, recreational events, and friendly competitions to promote healthy lifestyles, teamwork, and friendship.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="p-4 rounded-4 border h-100 bg-white shadow-sm">
+                        <div class="d-flex align-items-center gap-3 mb-2">
+                            <div class="p-2 rounded-3 bg-info bg-opacity-10 text-info fs-4"><i class="bi bi-share-fill"></i></div>
+                            <h5 class="fw-bold text-navy mb-0">Networking & Fellowship</h5>
+                        </div>
+                        <p class="text-muted small mb-0" style="line-height: 1.8;">The club provides opportunities for members to meet, build meaningful relationships, exchange ideas, and develop professional and social networks.</p>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="p-4 rounded-4 border bg-white shadow-sm">
+                        <div class="d-flex align-items-center gap-3 mb-2">
+                            <div class="p-2 rounded-3 bg-danger bg-opacity-10 text-danger fs-4"><i class="bi bi-gift-fill"></i></div>
+                            <h5 class="fw-bold text-navy mb-0">Charity & Support</h5>
+                        </div>
+                        <p class="text-muted small mb-0" style="line-height: 1.8;">We may organize fundraising and assistance programs for deserving individuals and communities, subject to the club\'s policies and available resources.</p>
+                    </div>
+                </div>
+            </div>',
+            'meta_title' => 'Our Activities | Chatkhil Elite Club Ltd.',
+            'meta_description' => 'Explore the activities of Chatkhil Elite Club Ltd.: social welfare, community service, cultural programs, education, sports, networking, and charity.',
         ]);
 
         Page::create([

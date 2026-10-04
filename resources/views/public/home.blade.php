@@ -100,51 +100,360 @@
     </div>
     @endif
 
-    <!-- About & President Message Section -->
+    <!-- About Us & Chairman's Message Section -->
     <section class="py-5" style="background: #ffffff;">
         <div class="container py-4">
-            <div class="row g-5 align-items-center">
+            <div class="row g-5 align-items-center mb-5">
                 <div class="col-lg-7">
                     <div class="pe-lg-4">
-                        <span class="section-subtitle">Fellowship & Tradition</span>
-                        <h2 class="club-heading mb-3">An Aristocratic Fellowship of Vision, Leadership & Brotherhood</h2>
+                        <span class="section-subtitle">Community & Fellowship</span>
+                        <h2 class="club-heading mb-3">About Chatkhil Elite Club Ltd.</h2>
                         <div class="mb-4 text-muted" style="line-height: 1.85; font-size: 1.02rem;">
-                            <p>
-                                <strong>Chatkhil ELITE Club Ltd.</strong> was established to foster an enlightened, non-political fellowship among accomplished individuals tracing their roots to Chatkhil Upazila, Noakhali.
+                            <p class="lead fw-semibold text-navy mb-3" style="font-size: 1.1rem; line-height: 1.75;">
+                                Chatkhil Elite Club Ltd. is a community-driven social organization dedicated to bringing together individuals who share a common commitment to social responsibility, personal development, friendship, and community well-being.
                             </p>
-                            <p>
-                                Grounded in the enduring values of <em>Unity, Excellence, Service, and Leadership</em>, the club serves as a distinguished platform for cultural enrichment, civic progress, philanthropic endeavors, and family recreation.
+                            <p class="mb-3">
+                                Our club provides a platform where members can connect, exchange ideas, participate in meaningful activities, and contribute positively to society. Through social initiatives, cultural programs, recreational activities, educational efforts, and community engagement, we aim to create a stronger and more connected community.
                             </p>
+                            <div class="p-3 my-3 rounded-3 border" style="background: rgba(246, 248, 251, 0.95); border-left: 4px solid var(--liquid-gold) !important;">
+                                <p class="mb-0 fw-semibold text-navy fst-italic">
+                                    “We believe that when people come together with positive intentions and collective effort, meaningful and lasting change can be created.”
+                                </p>
+                            </div>
                         </div>
                         <div class="d-flex flex-wrap gap-3">
                             <a href="{{ route('about.index') }}" class="btn btn-club-primary">
-                                <i class="bi bi-info-circle me-1"></i> Explore Full Charter
+                                <i class="bi bi-info-circle me-1"></i> Read Full Story
                             </a>
-                            <a href="{{ route('committee') }}" class="btn btn-club-outline">
-                                <i class="bi bi-people me-1"></i> Executive Board
+                            <a href="{{ route('about.activities') }}" class="btn btn-club-outline">
+                                <i class="bi bi-grid me-1"></i> Explore Activities
                             </a>
                         </div>
                     </div>
                 </div>
 
                 <div class="col-lg-5">
-                    <div class="president-card position-relative overflow-hidden">
+                    <div class="president-card position-relative overflow-hidden shadow-sm" style="border: 1.5px solid rgba(197, 160, 89, 0.35);">
                         <div class="d-flex align-items-center gap-3 mb-3">
                             <div style="width: 82px; height: 82px; border-radius: 50%; border: 3px solid var(--liquid-gold); overflow: hidden; flex-shrink: 0; box-shadow: 0 4px 14px rgba(197, 160, 89, 0.35);">
-                                <img src="{{ asset(\App\Models\Setting::get('president_photo', 'images/president.jpg')) }}" alt="President Photo" style="width: 100%; height: 100%; object-fit: cover;">
+                                <img src="{{ asset(\App\Models\Setting::get('president_photo', 'images/president.jpg')) }}" alt="Chairman Photo" style="width: 100%; height: 100%; object-fit: cover;">
                             </div>
                             <div>
-                                <span class="badge bg-warning text-dark text-uppercase fw-bold mb-1" style="font-size: 0.68rem; letter-spacing: 0.05em;">Message from President</span>
-                                <h5 class="mb-0 text-navy font-serif fw-bold">{{ \App\Models\Setting::get('president_name', 'Alhaj Md. Faruk Hossain') }}</h5>
-                                <span class="text-muted small">{{ \App\Models\Setting::get('president_title', 'President, Chatkhil ELITE Club Ltd.') }}</span>
+                                <span class="badge bg-warning text-dark text-uppercase fw-bold mb-1" style="font-size: 0.68rem; letter-spacing: 0.05em;">Executive Address</span>
+                                <h5 class="mb-0 text-navy font-serif fw-bold">Chairman's Message</h5>
+                                <span class="text-muted small">Chatkhil Elite Club Ltd.</span>
                             </div>
                         </div>
-                        <p class="small text-muted fst-italic mb-3" style="line-height: 1.7; font-size: 0.92rem;">
-                            "Chatkhil ELITE Club Ltd. represents our shared identity and collective pride. We invite every eligible son and daughter of Chatkhil to join hands in making our community stronger, more compassionate, and prosperous."
+                        <p class="fw-bold text-navy mb-2" style="font-size: 0.98rem;">Welcome to Chatkhil Elite Club Ltd.</p>
+                        <p class="small text-muted mb-2" style="line-height: 1.7; font-size: 0.92rem;">
+                            "Our club was founded on the belief that strong communities are built through friendship, cooperation, mutual respect, and a willingness to contribute. We are committed to creating a platform where our members can connect with one another, enjoy meaningful activities, develop their potential, and contribute positively to society."
                         </p>
-                        <a href="{{ route('about.president') }}" class="text-navy fw-bold small text-decoration-none d-inline-flex align-items-center gap-1">
-                            Read Full Presidential Address <i class="bi bi-arrow-right text-warning"></i>
+                        <div class="p-2 px-3 rounded-2 mb-3 small" style="background: rgba(197, 160, 89, 0.12); border-left: 3px solid var(--liquid-gold);">
+                            <span class="fst-italic text-navy fw-semibold">
+                                “Together, we can connect, contribute, and create a lasting positive Impact.”
+                            </span>
+                        </div>
+                        <a href="{{ route('about.chairman') }}" class="text-navy fw-bold small text-decoration-none d-inline-flex align-items-center gap-1">
+                            Read Complete Message <i class="bi bi-arrow-right text-warning"></i>
                         </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Our Mission & Our Vision Row -->
+            <div class="row g-4 mt-2">
+                <div class="col-md-6">
+                    <div class="club-card p-4 p-md-5 h-100 position-relative" style="border-top: 4px solid var(--liquid-gold) !important;">
+                        <div class="d-flex align-items-center gap-3 mb-3">
+                            <div class="p-2 rounded-3 bg-warning bg-opacity-10 text-warning fs-3">
+                                <i class="bi bi-compass"></i>
+                            </div>
+                            <h3 class="font-serif text-navy mb-0">Our Mission</h3>
+                        </div>
+                        <p class="text-muted mb-3">Our mission is to build a vibrant and responsible community by:</p>
+                        <ul class="list-unstyled text-muted" style="line-height: 1.85;">
+                            <li class="mb-2 d-flex align-items-start gap-2">
+                                <i class="bi bi-check2-circle text-warning fs-5 flex-shrink-0 mt-1"></i>
+                                <span>Promoting friendship, unity, and mutual respect among members.</span>
+                            </li>
+                            <li class="mb-2 d-flex align-items-start gap-2">
+                                <i class="bi bi-check2-circle text-warning fs-5 flex-shrink-0 mt-1"></i>
+                                <span>Organizing meaningful social, cultural, educational, and recreational activities.</span>
+                            </li>
+                            <li class="mb-2 d-flex align-items-start gap-2">
+                                <i class="bi bi-check2-circle text-warning fs-5 flex-shrink-0 mt-1"></i>
+                                <span>Encouraging volunteerism and community service.</span>
+                            </li>
+                            <li class="mb-2 d-flex align-items-start gap-2">
+                                <i class="bi bi-check2-circle text-warning fs-5 flex-shrink-0 mt-1"></i>
+                                <span>Supporting initiatives that contribute to the welfare of people and the local community.</span>
+                            </li>
+                            <li class="mb-2 d-flex align-items-start gap-2">
+                                <i class="bi bi-check2-circle text-warning fs-5 flex-shrink-0 mt-1"></i>
+                                <span>Creating opportunities for personal growth, networking, and leadership.</span>
+                            </li>
+                            <li class="mb-0 d-flex align-items-start gap-2">
+                                <i class="bi bi-check2-circle text-warning fs-5 flex-shrink-0 mt-1"></i>
+                                <span>Developing a positive and inclusive environment for members of all backgrounds.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="club-card p-4 p-md-5 h-100 position-relative d-flex flex-column justify-content-between" style="border-top: 4px solid var(--liquid-navy-deep) !important;">
+                        <div>
+                            <div class="d-flex align-items-center gap-3 mb-3">
+                                <div class="p-2 rounded-3 bg-primary bg-opacity-10 text-primary fs-3">
+                                    <i class="bi bi-eye"></i>
+                                </div>
+                                <h3 class="font-serif text-navy mb-0">Our Vision</h3>
+                            </div>
+                            <p class="text-muted lead mb-4" style="line-height: 1.85; font-size: 1.08rem;">
+                                Our vision is to establish <strong>Chatkhil Elite Club Ltd.</strong> as a trusted and respected community platform where people come together to build relationships, develop their potential, serve society, and create positive change.
+                            </p>
+                        </div>
+                        <div class="p-4 rounded-4" style="background: linear-gradient(135deg, rgba(7, 14, 27, 0.95) 0%, rgba(13, 26, 48, 0.95) 100%); color: #ffffff; border: 1.5px solid var(--liquid-gold);">
+                            <span class="badge bg-warning text-dark text-uppercase fw-bold mb-2 px-3 py-1" style="font-size: 0.72rem; letter-spacing: 0.08em;">
+                                A United Future
+                            </span>
+                            <h5 class="font-serif text-white mb-2" style="line-height: 1.6;">
+                                We envision a community that is connected, responsible, compassionate, progressive, and united.
+                            </h5>
+                            <div class="d-flex flex-wrap gap-2 mt-3">
+                                <span class="badge bg-white bg-opacity-10 text-warning border border-warning border-opacity-25 px-3 py-2 fs-6">Connected</span>
+                                <span class="badge bg-white bg-opacity-10 text-warning border border-warning border-opacity-25 px-3 py-2 fs-6">Responsible</span>
+                                <span class="badge bg-white bg-opacity-10 text-warning border border-warning border-opacity-25 px-3 py-2 fs-6">Compassionate</span>
+                                <span class="badge bg-white bg-opacity-10 text-warning border border-warning border-opacity-25 px-3 py-2 fs-6">Progressive</span>
+                                <span class="badge bg-white bg-opacity-10 text-warning border border-warning border-opacity-25 px-3 py-2 fs-6">United</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Core Values Section -->
+    <section class="py-5" style="background: #f8fafc; border-top: 1px solid rgba(197, 160, 89, 0.2); border-bottom: 1px solid rgba(197, 160, 89, 0.2);">
+        <div class="container py-4">
+            <div class="section-title-wrap mb-5">
+                <span class="section-subtitle">Principles We Stand For</span>
+                <h2 class="section-main-title">Our Core Values</h2>
+                <p class="text-muted mt-2" style="max-width: 650px; margin: 0 auto; font-size: 0.95rem;">
+                    The essential pillars shaping our culture, community actions, and fellowship standards:
+                </p>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-4 col-sm-6">
+                    <div class="club-card p-4 h-100 d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="d-flex align-items-center gap-3 mb-2">
+                                <div class="p-2 rounded-3 bg-warning bg-opacity-10 text-warning fs-4"><i class="bi bi-shield-check"></i></div>
+                                <h4 class="font-serif text-navy fw-bold mb-0">Integrity</h4>
+                            </div>
+                            <p class="text-muted small mt-2 mb-0" style="line-height: 1.7;">
+                                We believe in honesty, transparency, and responsible conduct across all our operations and relationships.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-sm-6">
+                    <div class="club-card p-4 h-100 d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="d-flex align-items-center gap-3 mb-2">
+                                <div class="p-2 rounded-3 bg-primary bg-opacity-10 text-primary fs-4"><i class="bi bi-people"></i></div>
+                                <h4 class="font-serif text-navy fw-bold mb-0">Unity</h4>
+                            </div>
+                            <p class="text-muted small mt-2 mb-0" style="line-height: 1.7;">
+                                We value teamwork and believe that collective effort creates greater impact for our community.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-sm-6">
+                    <div class="club-card p-4 h-100 d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="d-flex align-items-center gap-3 mb-2">
+                                <div class="p-2 rounded-3 bg-danger bg-opacity-10 text-danger fs-4"><i class="bi bi-heart"></i></div>
+                                <h4 class="font-serif text-navy fw-bold mb-0">Respect</h4>
+                            </div>
+                            <p class="text-muted small mt-2 mb-0" style="line-height: 1.7;">
+                                We respect every member and value diversity of ideas, professions, and backgrounds.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-sm-6">
+                    <div class="club-card p-4 h-100 d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="d-flex align-items-center gap-3 mb-2">
+                                <div class="p-2 rounded-3 bg-success bg-opacity-10 text-success fs-4"><i class="bi bi-hand-thumbs-up"></i></div>
+                                <h4 class="font-serif text-navy fw-bold mb-0">Service</h4>
+                            </div>
+                            <p class="text-muted small mt-2 mb-0" style="line-height: 1.7;">
+                                We encourage members to contribute their time, skills, and resources for the benefit of society.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-sm-6">
+                    <div class="club-card p-4 h-100 d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="d-flex align-items-center gap-3 mb-2">
+                                <div class="p-2 rounded-3 bg-warning bg-opacity-10 text-warning fs-4"><i class="bi bi-award"></i></div>
+                                <h4 class="font-serif text-navy fw-bold mb-0">Leadership</h4>
+                            </div>
+                            <p class="text-muted small mt-2 mb-0" style="line-height: 1.7;">
+                                We promote responsible leadership, proactive initiative, and ongoing personal development.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-sm-6">
+                    <div class="club-card p-4 h-100 d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="d-flex align-items-center gap-3 mb-2">
+                                <div class="p-2 rounded-3 bg-info bg-opacity-10 text-info fs-4"><i class="bi bi-gem"></i></div>
+                                <h4 class="font-serif text-navy fw-bold mb-0">Friendship</h4>
+                            </div>
+                            <p class="text-muted small mt-2 mb-0" style="line-height: 1.7;">
+                                We believe strong relationships and mutual trust are the foundation of a strong community.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Activities Section -->
+    <section class="py-5" style="background: #ffffff;">
+        <div class="container py-4">
+            <div class="section-title-wrap mb-5">
+                <span class="section-subtitle">What We Do</span>
+                <h2 class="section-main-title">Our Activities</h2>
+                <p class="text-muted mt-2" style="max-width: 680px; margin: 0 auto; font-size: 0.95rem;">
+                    Creating meaningful impact through social welfare, cultural enrichment, sports, education, and mutual fellowship:
+                </p>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4">
+                    <div class="club-card p-4 h-100">
+                        <div class="d-flex align-items-center gap-3 mb-3">
+                            <div class="p-3 rounded-4 bg-danger bg-opacity-10 text-danger fs-3"><i class="bi bi-heart-pulse-fill"></i></div>
+                            <div>
+                                <span class="badge bg-light text-muted border text-uppercase" style="font-size: 0.65rem;">Welfare</span>
+                                <h5 class="font-serif fw-bold text-navy mb-0">Social Welfare</h5>
+                            </div>
+                        </div>
+                        <p class="small text-muted mb-0" style="line-height: 1.8;">
+                            We organize and support initiatives aimed at helping people in need and contributing to community welfare.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="club-card p-4 h-100">
+                        <div class="d-flex align-items-center gap-3 mb-3">
+                            <div class="p-3 rounded-4 bg-primary bg-opacity-10 text-primary fs-3"><i class="bi bi-people-fill"></i></div>
+                            <div>
+                                <span class="badge bg-light text-muted border text-uppercase" style="font-size: 0.65rem;">Impact</span>
+                                <h5 class="font-serif fw-bold text-navy mb-0">Community Service</h5>
+                            </div>
+                        </div>
+                        <p class="small text-muted mb-0" style="line-height: 1.8;">
+                            Our members participate in volunteer activities and community-focused programs designed to create a positive social impact.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="club-card p-4 h-100">
+                        <div class="d-flex align-items-center gap-3 mb-3">
+                            <div class="p-3 rounded-4 bg-warning bg-opacity-10 text-warning fs-3"><i class="bi bi-palette-fill"></i></div>
+                            <div>
+                                <span class="badge bg-light text-muted border text-uppercase" style="font-size: 0.65rem;">Heritage</span>
+                                <h5 class="font-serif fw-bold text-navy mb-0">Cultural Programs</h5>
+                            </div>
+                        </div>
+                        <p class="small text-muted mb-0" style="line-height: 1.8;">
+                            We arrange cultural events, celebrations, and programs that encourage creativity and help preserve our shared cultural values.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="club-card p-4 h-100">
+                        <div class="d-flex align-items-center gap-3 mb-3">
+                            <div class="p-3 rounded-4 bg-success bg-opacity-10 text-success fs-3"><i class="bi bi-mortarboard-fill"></i></div>
+                            <div>
+                                <span class="badge bg-light text-muted border text-uppercase" style="font-size: 0.65rem;">Knowledge</span>
+                                <h5 class="font-serif fw-bold text-navy mb-0">Educational Initiatives</h5>
+                            </div>
+                        </div>
+                        <p class="small text-muted mb-0" style="line-height: 1.8;">
+                            We support educational awareness, knowledge-sharing, seminars, workshops, and activities that encourage learning and personal development.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="club-card p-4 h-100">
+                        <div class="d-flex align-items-center gap-3 mb-3">
+                            <div class="p-3 rounded-4 bg-warning bg-opacity-10 text-warning fs-3"><i class="bi bi-trophy-fill"></i></div>
+                            <div>
+                                <span class="badge bg-light text-muted border text-uppercase" style="font-size: 0.65rem;">Health</span>
+                                <h5 class="font-serif fw-bold text-navy mb-0">Sports & Recreation</h5>
+                            </div>
+                        </div>
+                        <p class="small text-muted mb-0" style="line-height: 1.8;">
+                            We organize sports, recreational events, and friendly competitions to promote healthy lifestyles, teamwork, and friendship.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="club-card p-4 h-100">
+                        <div class="d-flex align-items-center gap-3 mb-3">
+                            <div class="p-3 rounded-4 bg-info bg-opacity-10 text-info fs-3"><i class="bi bi-share-fill"></i></div>
+                            <div>
+                                <span class="badge bg-light text-muted border text-uppercase" style="font-size: 0.65rem;">Fellowship</span>
+                                <h5 class="font-serif fw-bold text-navy mb-0">Networking & Fellowship</h5>
+                            </div>
+                        </div>
+                        <p class="small text-muted mb-0" style="line-height: 1.8;">
+                            The club provides opportunities for members to meet, build meaningful relationships, exchange ideas, and develop professional and social networks.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-12">
+                    <div class="club-card p-4" style="background: rgba(246, 248, 251, 0.95); border: 1.5px solid var(--liquid-gold);">
+                        <div class="row align-items-center g-3">
+                            <div class="col-md-8 d-flex align-items-center gap-3">
+                                <div class="p-3 rounded-4 bg-danger bg-opacity-10 text-danger fs-2 flex-shrink-0"><i class="bi bi-gift-fill"></i></div>
+                                <div>
+                                    <span class="badge bg-danger text-white text-uppercase" style="font-size: 0.68rem;">Philanthropy</span>
+                                    <h5 class="font-serif fw-bold text-navy mb-1">Charity & Support</h5>
+                                    <p class="small text-muted mb-0" style="line-height: 1.7;">
+                                        We may organize fundraising and assistance programs for deserving individuals and communities, subject to the club's policies and available resources.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-md-4 text-md-end">
+                                <a href="{{ route('about.activities') }}" class="btn btn-club-primary btn-sm px-4 py-2">
+                                    <i class="bi bi-grid-fill me-1"></i> View Activities Page
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -360,28 +669,78 @@
         </div>
     </section>
 
-    <!-- Membership Call to Action with Liquid Glass -->
+    <!-- Why Join & Membership Call to Action with Liquid Glass -->
     <section class="py-5" style="background: linear-gradient(135deg, #070e1b 0%, #0d1a30 50%, #152643 100%); color: #ffffff; border-top: 3px solid var(--liquid-gold);">
-        <div class="container py-4 text-center">
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <img src="{{ asset('images/logo.png') }}" alt="Emblem" style="height: 80px; margin-bottom: 20px; filter: drop-shadow(0 4px 12px rgba(197, 160, 89, 0.5));">
+        <div class="container py-4">
+            <div class="row g-5 align-items-center">
+                <div class="col-lg-7">
                     <span class="badge bg-warning text-dark text-uppercase fw-bold mb-2 px-3 py-1" style="letter-spacing: 0.1em; font-size: 0.74rem;">
-                        “Unity • Excellence • Service • Leadership”
+                        Join the Fellowship
                     </span>
                     <h2 class="font-serif text-white mb-3" style="font-size: 2.2rem;">
-                        Enroll into Chatkhil ELITE Club Ltd.
+                        Why Join Chatkhil Elite Club?
                     </h2>
-                    <p class="lead text-light mb-4" style="font-weight: 300; line-height: 1.7;">
-                        Join hands with our community of respected professionals, entrepreneurs, and changemakers. Experience aristocratic fellowship, family privileges, and impactful community welfare.
+                    <p class="text-light mb-4" style="line-height: 1.7; color: #cbd5e1; font-size: 1.05rem;">
+                        Being a member of <strong>Chatkhil Elite Club Ltd.</strong> means becoming part of a community where you can:
                     </p>
-                    <div class="d-flex flex-wrap justify-content-center gap-3">
-                        <a href="{{ route('membership.apply') }}" class="btn btn-club-gold btn-lg px-4 py-3">
-                            <i class="bi bi-person-plus-fill me-2"></i> Fill Online Application Form
-                        </a>
-                        <a href="{{ route('membership.info') }}" class="btn btn-club-glass btn-lg px-4 py-3">
-                            <i class="bi bi-info-circle me-2"></i> Categories & Guidelines
-                        </a>
+                    <div class="row g-3 text-start mb-4">
+                        <div class="col-sm-6 d-flex align-items-start gap-2">
+                            <i class="bi bi-check-circle-fill text-warning fs-5 flex-shrink-0 mt-1"></i>
+                            <span class="text-light small">Build meaningful friendships and connections.</span>
+                        </div>
+                        <div class="col-sm-6 d-flex align-items-start gap-2">
+                            <i class="bi bi-check-circle-fill text-warning fs-5 flex-shrink-0 mt-1"></i>
+                            <span class="text-light small">Participate in social and community activities.</span>
+                        </div>
+                        <div class="col-sm-6 d-flex align-items-start gap-2">
+                            <i class="bi bi-check-circle-fill text-warning fs-5 flex-shrink-0 mt-1"></i>
+                            <span class="text-light small">Develop leadership and organizational skills.</span>
+                        </div>
+                        <div class="col-sm-6 d-flex align-items-start gap-2">
+                            <i class="bi bi-check-circle-fill text-warning fs-5 flex-shrink-0 mt-1"></i>
+                            <span class="text-light small">Share knowledge, ideas, and experiences.</span>
+                        </div>
+                        <div class="col-sm-6 d-flex align-items-start gap-2">
+                            <i class="bi bi-check-circle-fill text-warning fs-5 flex-shrink-0 mt-1"></i>
+                            <span class="text-light small">Contribute to worthwhile initiatives.</span>
+                        </div>
+                        <div class="col-sm-6 d-flex align-items-start gap-2">
+                            <i class="bi bi-check-circle-fill text-warning fs-5 flex-shrink-0 mt-1"></i>
+                            <span class="text-light small">Enjoy cultural, recreational, and social events.</span>
+                        </div>
+                        <div class="col-12 d-flex align-items-start gap-2">
+                            <i class="bi bi-check-circle-fill text-warning fs-5 flex-shrink-0 mt-1"></i>
+                            <span class="text-white small fw-semibold">Become part of a positive and supportive community.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-5">
+                    <div class="p-4 p-md-5 rounded-4 text-center" style="background: rgba(255, 255, 255, 0.06); backdrop-filter: blur(20px); border: 1.5px solid rgba(223, 196, 136, 0.35); box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35);">
+                        <img src="{{ asset('images/logo.png') }}" alt="Emblem" style="height: 70px; margin-bottom: 15px; filter: drop-shadow(0 4px 12px rgba(197, 160, 89, 0.5));">
+                        <span class="badge bg-warning text-dark text-uppercase fw-bold mb-2 px-3 py-1" style="font-size: 0.72rem; letter-spacing: 0.08em;">
+                            Membership Invitation
+                        </span>
+                        <h4 class="font-serif text-white mb-2">Become a Part of Our Community</h4>
+                        <p class="small text-light-50 mb-3" style="line-height: 1.7; color: #cbd5e1;">
+                            Chatkhil Elite Club Ltd. welcomes individuals who believe in friendship, community, personal development, and social responsibility.
+                        </p>
+                        <p class="small text-light-50 mb-3" style="line-height: 1.7; color: #cbd5e1;">
+                            Whether you want to participate in community initiatives, meet new people, develop your network, or simply become part of an active and positive community, there is a place for you at Chatkhil Elite Club.
+                        </p>
+                        <div class="p-2 px-3 rounded-3 mb-4" style="background: rgba(197, 160, 89, 0.15); border: 1px solid rgba(197, 160, 89, 0.4);">
+                            <span class="fw-bold text-warning font-serif" style="font-size: 1rem;">
+                                Join us. Connect. Contribute. Grow together.
+                            </span>
+                        </div>
+                        <div class="d-flex flex-column gap-2">
+                            <a href="{{ route('membership.apply') }}" class="btn btn-club-gold btn-lg w-100 fw-bold py-3 shadow">
+                                <i class="bi bi-pencil-square me-2"></i> Apply for Membership
+                            </a>
+                            <a href="{{ route('membership.info') }}" class="btn btn-club-glass btn-sm w-100 py-2">
+                                <i class="bi bi-card-checklist me-1"></i> View 7 Categories & Fees
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>

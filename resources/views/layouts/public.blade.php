@@ -72,9 +72,10 @@
                         </a>
                         <ul class="dropdown-menu dropdown-menu-glass border-0">
                             <li><a class="dropdown-item" href="{{ route('about.index') }}"><i class="bi bi-info-circle text-warning"></i> About the Club</a></li>
-                            <li><a class="dropdown-item" href="{{ route('committee') }}"><i class="bi bi-people-fill text-warning"></i> Executive Committee</a></li>
-                            <li><a class="dropdown-item" href="{{ route('about.president') }}"><i class="bi bi-chat-quote-fill text-warning"></i> President's Message</a></li>
+                            <li><a class="dropdown-item" href="{{ route('about.chairman') }}"><i class="bi bi-chat-quote-fill text-warning"></i> Chairman's Message</a></li>
                             <li><a class="dropdown-item" href="{{ route('about.mission') }}"><i class="bi bi-compass-fill text-warning"></i> Mission & Vision</a></li>
+                            <li><a class="dropdown-item" href="{{ route('about.activities') }}"><i class="bi bi-grid-fill text-warning"></i> Our Activities</a></li>
+                            <li><a class="dropdown-item" href="{{ route('committee') }}"><i class="bi bi-people-fill text-warning"></i> Executive Committee</a></li>
                             <li><hr class="dropdown-divider my-1"></li>
                             <li><a class="dropdown-item" href="{{ route('about.constitution') }}"><i class="bi bi-file-text-fill text-warning"></i> Constitution & By-Laws</a></li>
                         </ul>
@@ -177,8 +178,8 @@
                             <span class="text-warning small text-uppercase fw-bold letter-spacing-1">Limited</span>
                         </div>
                     </div>
-                    <p class="small text-light-50">
-                        {{ \App\Models\Setting::get('site_tagline', 'United by Community, Driven by Excellence.') }} The premier social fellowship uniting professionals, entrepreneurs, and leaders of Chatkhil, Noakhali.
+                    <p class="small text-light-50" style="line-height: 1.7;">
+                        Chatkhil Elite Club Ltd. is a community-driven social organization dedicated to bringing together individuals who share a common commitment to social responsibility, personal development, friendship, and community well-being.
                     </p>
                     <div class="d-flex gap-3 mt-3">
                         <a href="{{ \App\Models\Setting::get('facebook_url', '#') }}" target="_blank" class="text-warning fs-5"><i class="bi bi-facebook"></i></a>
@@ -190,12 +191,12 @@
                 <div class="col-lg-2 col-md-6">
                     <h5>Quick Links</h5>
                     <ul class="list-unstyled small">
-                        <li class="mb-2"><a href="{{ route('about.index') }}"><i class="bi bi-chevron-right me-1 text-warning"></i> About Club</a></li>
+                        <li class="mb-2"><a href="{{ route('about.index') }}"><i class="bi bi-chevron-right me-1 text-warning"></i> About Us</a></li>
+                        <li class="mb-2"><a href="{{ route('about.chairman') }}"><i class="bi bi-chevron-right me-1 text-warning"></i> Chairman's Message</a></li>
+                        <li class="mb-2"><a href="{{ route('about.activities') }}"><i class="bi bi-chevron-right me-1 text-warning"></i> Our Activities</a></li>
+                        <li class="mb-2"><a href="{{ route('about.mission') }}"><i class="bi bi-chevron-right me-1 text-warning"></i> Mission & Vision</a></li>
                         <li class="mb-2"><a href="{{ route('committee') }}"><i class="bi bi-chevron-right me-1 text-warning"></i> Executive Board</a></li>
-                        <li class="mb-2"><a href="{{ route('members.index') }}"><i class="bi bi-chevron-right me-1 text-warning"></i> Member Directory</a></li>
-                        <li class="mb-2"><a href="{{ route('notices.index') }}"><i class="bi bi-chevron-right me-1 text-warning"></i> Notice Board</a></li>
-                        <li class="mb-2"><a href="{{ route('gallery.index') }}"><i class="bi bi-chevron-right me-1 text-warning"></i> Photo Gallery</a></li>
-                        <li class="mb-2"><a href="{{ route('documents.index') }}"><i class="bi bi-chevron-right me-1 text-warning"></i> Downloads</a></li>
+                        <li class="mb-2"><a href="{{ route('members.index') }}"><i class="bi bi-chevron-right me-1 text-warning"></i> Members Directory</a></li>
                     </ul>
                 </div>
 

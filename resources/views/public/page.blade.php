@@ -40,10 +40,11 @@
                         <h5 class="font-serif mb-3">About the Club</h5>
                         <ul class="list-unstyled mb-0">
                             <li class="mb-2"><a href="{{ route('about.index') }}" class="text-decoration-none {{ request()->routeIs('about.index') ? 'fw-bold text-navy' : 'text-muted' }}"><i class="bi bi-chevron-right text-warning me-1"></i> About Chatkhil Elite Club</a></li>
+                            <li class="mb-2"><a href="{{ route('about.chairman') }}" class="text-decoration-none {{ request()->routeIs('about.chairman') || request()->routeIs('about.president') ? 'fw-bold text-navy' : 'text-muted' }}"><i class="bi bi-chevron-right text-warning me-1"></i> Chairman's Message</a></li>
                             <li class="mb-2"><a href="{{ route('about.mission') }}" class="text-decoration-none {{ request()->routeIs('about.mission') ? 'fw-bold text-navy' : 'text-muted' }}"><i class="bi bi-chevron-right text-warning me-1"></i> Mission & Vision</a></li>
-                            <li class="mb-2"><a href="{{ route('about.president') }}" class="text-decoration-none {{ request()->routeIs('about.president') ? 'fw-bold text-navy' : 'text-muted' }}"><i class="bi bi-chevron-right text-warning me-1"></i> President's Message</a></li>
-                            <li class="mb-2"><a href="{{ route('about.constitution') }}" class="text-decoration-none {{ request()->routeIs('about.constitution') ? 'fw-bold text-navy' : 'text-muted' }}"><i class="bi bi-chevron-right text-warning me-1"></i> Constitution & By-Laws</a></li>
+                            <li class="mb-2"><a href="{{ route('about.activities') }}" class="text-decoration-none {{ request()->routeIs('about.activities') ? 'fw-bold text-navy' : 'text-muted' }}"><i class="bi bi-chevron-right text-warning me-1"></i> Our Activities</a></li>
                             <li class="mb-2"><a href="{{ route('committee') }}" class="text-decoration-none text-muted"><i class="bi bi-chevron-right text-warning me-1"></i> Executive Committee</a></li>
+                            <li class="mb-2"><a href="{{ route('about.constitution') }}" class="text-decoration-none {{ request()->routeIs('about.constitution') ? 'fw-bold text-navy' : 'text-muted' }}"><i class="bi bi-chevron-right text-warning me-1"></i> Constitution & By-Laws</a></li>
                             <li class="mb-0"><a href="{{ route('documents.index') }}" class="text-decoration-none text-muted"><i class="bi bi-chevron-right text-warning me-1"></i> Official Documents</a></li>
                         </ul>
                     </div>

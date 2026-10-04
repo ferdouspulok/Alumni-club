@@ -26,6 +26,17 @@ class AboutController extends Controller
         return view('public.page', compact('page'));
     }
 
+    public function chairmanMessage(): View
+    {
+        return $this->presidentMessage();
+    }
+
+    public function activities(): View
+    {
+        $page = Page::where('slug', 'activities')->firstOrFail();
+        return view('public.page', compact('page'));
+    }
+
     public function constitution(): View
     {
         $page = Page::where('slug', 'constitution')->firstOrFail();

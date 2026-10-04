@@ -50,7 +50,9 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::prefix('about')->name('about.')->group(function () {
     Route::get('/', [AboutController::class, 'index'])->name('index');
     Route::get('/mission-vision', [AboutController::class, 'missionVision'])->name('mission');
+    Route::get('/chairman-message', [AboutController::class, 'chairmanMessage'])->name('chairman');
     Route::get('/president-message', [AboutController::class, 'presidentMessage'])->name('president');
+    Route::get('/activities', [AboutController::class, 'activities'])->name('activities');
     Route::get('/constitution', [AboutController::class, 'constitution'])->name('constitution');
 });
 

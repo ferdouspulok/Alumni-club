@@ -78,6 +78,72 @@
                 @endforeach
             </div>
 
+            <!-- Why Join & Community Invitation Section -->
+            <div class="mt-5 p-4 p-md-5 rounded-4 shadow-sm" style="background: #ffffff; border-left: 5px solid var(--liquid-gold) !important;">
+                <div class="row g-5 align-items-center">
+                    <div class="col-lg-7">
+                        <span class="section-subtitle">Privileges & Benefits</span>
+                        <h3 class="font-serif text-navy mb-3"><i class="bi bi-patch-check-fill text-warning me-2"></i>Why Join Chatkhil Elite Club?</h3>
+                        <p class="text-muted mb-3" style="font-size: 1.02rem;">
+                            Being a member of <strong>Chatkhil Elite Club Ltd.</strong> means becoming part of a community where you can:
+                        </p>
+                        <div class="row g-3">
+                            <div class="col-sm-6 d-flex align-items-start gap-2">
+                                <i class="bi bi-check-circle-fill text-success fs-5 flex-shrink-0 mt-1"></i>
+                                <span class="text-dark small">Build meaningful friendships and connections.</span>
+                            </div>
+                            <div class="col-sm-6 d-flex align-items-start gap-2">
+                                <i class="bi bi-check-circle-fill text-success fs-5 flex-shrink-0 mt-1"></i>
+                                <span class="text-dark small">Participate in social and community activities.</span>
+                            </div>
+                            <div class="col-sm-6 d-flex align-items-start gap-2">
+                                <i class="bi bi-check-circle-fill text-success fs-5 flex-shrink-0 mt-1"></i>
+                                <span class="text-dark small">Develop leadership and organizational skills.</span>
+                            </div>
+                            <div class="col-sm-6 d-flex align-items-start gap-2">
+                                <i class="bi bi-check-circle-fill text-success fs-5 flex-shrink-0 mt-1"></i>
+                                <span class="text-dark small">Share knowledge, ideas, and experiences.</span>
+                            </div>
+                            <div class="col-sm-6 d-flex align-items-start gap-2">
+                                <i class="bi bi-check-circle-fill text-success fs-5 flex-shrink-0 mt-1"></i>
+                                <span class="text-dark small">Contribute to worthwhile initiatives.</span>
+                            </div>
+                            <div class="col-sm-6 d-flex align-items-start gap-2">
+                                <i class="bi bi-check-circle-fill text-success fs-5 flex-shrink-0 mt-1"></i>
+                                <span class="text-dark small">Enjoy cultural, recreational, and social events.</span>
+                            </div>
+                            <div class="col-12 d-flex align-items-start gap-2">
+                                <i class="bi bi-check-circle-fill text-success fs-5 flex-shrink-0 mt-1"></i>
+                                <span class="text-dark small fw-semibold">Become part of a positive and supportive community.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-5">
+                        <div class="p-4 rounded-4" style="background: rgba(246, 248, 251, 0.95); border: 1.5px solid rgba(197, 160, 89, 0.3);">
+                            <span class="badge bg-warning text-dark text-uppercase fw-bold mb-2 px-3 py-1" style="letter-spacing: 0.08em; font-size: 0.72rem;">
+                                Welcome to Membership
+                            </span>
+                            <h4 class="font-serif text-navy mb-2">Become a Part of Our Community</h4>
+                            <p class="small text-muted mb-3" style="line-height: 1.8;">
+                                <strong>Chatkhil Elite Club Ltd.</strong> welcomes individuals who believe in friendship, community, personal development, and social responsibility.
+                            </p>
+                            <p class="small text-muted mb-3" style="line-height: 1.8;">
+                                Whether you want to participate in community initiatives, meet new people, develop your network, or simply become part of an active and positive community, there is a place for you at Chatkhil Elite Club.
+                            </p>
+                            <div class="p-2 px-3 rounded-3 mb-3" style="background: rgba(197, 160, 89, 0.12); border: 1px solid rgba(197, 160, 89, 0.35);">
+                                <span class="fw-bold text-navy font-serif" style="font-size: 0.95rem;">
+                                    Join us. Connect. Contribute. Grow together.
+                                </span>
+                            </div>
+                            <a href="{{ route('membership.apply') }}" class="btn btn-club-gold w-100 fw-bold py-2 shadow-sm">
+                                <i class="bi bi-pencil-square me-1"></i> Begin Online Application
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- Application & Scrutiny Process -->
             <div class="mt-5 p-4 p-md-5 rounded-4 shadow-sm" style="background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(20px); border: 1.5px solid rgba(223, 196, 136, 0.4);">
                 <div class="row g-4 align-items-center">
