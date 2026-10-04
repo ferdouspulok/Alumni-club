@@ -44,29 +44,50 @@
                     <i class="bi bi-speedometer2"></i> Dashboard
                 </a>
 
-                <div class="nav-header">Membership</div>
-                <a href="{{ route('admin.members.index') }}" class="nav-link {{ request()->routeIs('admin.members.index') ? 'active' : '' }}">
-                    <i class="bi bi-people"></i> All Members
-                </a>
-                <a href="{{ route('admin.members.pending') }}" class="nav-link {{ request()->routeIs('admin.members.pending') ? 'active' : '' }}">
-                    <i class="bi bi-person-check"></i> Pending Applications
-                    @if($pendingCount > 0)
-                        <span class="badge bg-danger ms-auto">{{ $pendingCount }}</span>
-                    @endif
-                </a>
-                <a href="{{ route('admin.members.create') }}" class="nav-link {{ request()->routeIs('admin.members.create') ? 'active' : '' }}">
-                    <i class="bi bi-person-plus"></i> Add New Member
-                </a>
-                <a href="{{ route('admin.membership-types.index') }}" class="nav-link {{ request()->routeIs('admin.membership-types*') ? 'active' : '' }}">
-                    <i class="bi bi-award"></i> Membership Types
-                </a>
+                @if(auth()->user()->isMemberManager())
+                    <div class="nav-header">Membership</div>
+                    <a href="{{ route('admin.members.index') }}" class="nav-link {{ request()->routeIs('admin.members.index') ? 'active' : '' }}">
+                        <i class="bi bi-people"></i> All Members
+                    </a>
+                    <a href="{{ route('admin.members.pending') }}" class="nav-link {{ request()->routeIs('admin.members.pending') ? 'active' : '' }}">
+                        <i class="bi bi-person-check"></i> Pending Applications
+                        @if($pendingCount > 0)
+                            <span class="badge bg-danger ms-auto">{{ $pendingCount }}</span>
+                        @endif
+                    </a>
+                    <a href="{{ route('admin.members.create') }}" class="nav-link {{ request()->routeIs('admin.members.create') ? 'active' : '' }}">
+                        <i class="bi bi-person-plus"></i> Add New Member
+                    </a>
+                    <a href="{{ route('admin.membership-types.index') }}" class="nav-link {{ request()->routeIs('admin.membership-types*') ? 'active' : '' }}">
+                        <i class="bi bi-award"></i> Membership Types
+                    </a>
 
-                <div class="nav-header">Governance</div>
-                <a href="{{ route('admin.committees.index') }}" class="nav-link {{ request()->routeIs('admin.committees*') ? 'active' : '' }}">
-                    <i class="bi bi-diagram-3"></i> Committee Terms
-                </a>
+                    <div class="nav-header">Governance</div>
+                    <a href="{{ route('admin.committees.index') }}" class="nav-link {{ request()->routeIs('admin.committees*') ? 'active' : '' }}">
+                        <i class="bi bi-diagram-3"></i> Committee Terms
+                    </a>
+                @endif
 
-                <div class="nav-header">Events & RSVPs</div>
+                @if(auth()->user()->isContentManager())
+                    <div class="nav-header">Content & Media (CMS)</div>
+                    <a href="{{ route('admin.pages.index') }}" class="nav-link {{ request()->routeIs('admin.pages*') ? 'active' : '' }}">
+                        <i class="bi bi-layout-text-window-reverse"></i> Website Pages CMS
+                    </a>
+                    <a href="{{ route('admin.news.index') }}" class="nav-link {{ request()->routeIs('admin.news*') ? 'active' : '' }}">
+                        <i class="bi bi-newspaper"></i> News & Activities
+                    </a>
+                    <a href="{{ route('admin.notices.index') }}" class="nav-link {{ request()->routeIs('admin.notices*') ? 'active' : '' }}">
+                        <i class="bi bi-megaphone"></i> Notice Board
+                    </a>
+                    <a href="{{ route('admin.gallery.index') }}" class="nav-link {{ request()->routeIs('admin.gallery*') ? 'active' : '' }}">
+                        <i class="bi bi-images"></i> Photo Gallery
+                    </a>
+                    <a href="{{ route('admin.documents.index') }}" class="nav-link {{ request()->routeIs('admin.documents*') ? 'active' : '' }}">
+                        <i class="bi bi-file-earmark-arrow-down"></i> Documents & By-Laws
+                    </a>
+                @endif
+
+                <div class="nav-header">Events & Activities</div>
                 <a href="{{ route('admin.events.index') }}" class="nav-link {{ request()->routeIs('admin.events.index') ? 'active' : '' }}">
                     <i class="bi bi-calendar-event"></i> All Events
                 </a>
@@ -77,34 +98,19 @@
                     <i class="bi bi-ticket-perforated"></i> Registrations / RSVPs
                 </a>
 
-                <div class="nav-header">Communications & Media</div>
-                <a href="{{ route('admin.notices.index') }}" class="nav-link {{ request()->routeIs('admin.notices*') ? 'active' : '' }}">
-                    <i class="bi bi-megaphone"></i> Notice Board
-                </a>
-                <a href="{{ route('admin.news.index') }}" class="nav-link {{ request()->routeIs('admin.news*') ? 'active' : '' }}">
-                    <i class="bi bi-newspaper"></i> News & Activities
-                </a>
-                <a href="{{ route('admin.gallery.index') }}" class="nav-link {{ request()->routeIs('admin.gallery*') ? 'active' : '' }}">
-                    <i class="bi bi-images"></i> Photo Gallery
-                </a>
-                <a href="{{ route('admin.documents.index') }}" class="nav-link {{ request()->routeIs('admin.documents*') ? 'active' : '' }}">
-                    <i class="bi bi-file-earmark-arrow-down"></i> Documents & By-Laws
-                </a>
-
-                <div class="nav-header">Website & Settings</div>
-                <a href="{{ route('admin.pages.index') }}" class="nav-link {{ request()->routeIs('admin.pages*') ? 'active' : '' }}">
-                    <i class="bi bi-layout-text-window-reverse"></i> Pages CMS
-                </a>
+                <div class="nav-header">Communications</div>
                 <a href="{{ route('admin.messages.index') }}" class="nav-link {{ request()->routeIs('admin.messages*') ? 'active' : '' }}">
                     <i class="bi bi-envelope"></i> Contact Messages
                     @if($unreadMsgCount > 0)
                         <span class="badge bg-warning text-dark ms-auto">{{ $unreadMsgCount }}</span>
                     @endif
                 </a>
-                <a href="{{ route('admin.settings.index') }}" class="nav-link {{ request()->routeIs('admin.settings*') ? 'active' : '' }}">
-                    <i class="bi bi-sliders"></i> General Settings
-                </a>
+
                 @if(auth()->user()->isSuperAdmin())
+                    <div class="nav-header">System Administration</div>
+                    <a href="{{ route('admin.settings.index') }}" class="nav-link {{ request()->routeIs('admin.settings*') ? 'active' : '' }}">
+                        <i class="bi bi-sliders"></i> General Settings
+                    </a>
                     <a href="{{ route('admin.users.index') }}" class="nav-link {{ request()->routeIs('admin.users*') ? 'active' : '' }}">
                         <i class="bi bi-shield-lock"></i> Admin Users & Roles
                     </a>
@@ -114,9 +120,22 @@
             <!-- Sidebar Footer -->
             <div class="p-3 border-top border-secondary border-opacity-25 small text-center text-muted">
                 <div>Logged in as: <strong class="text-white">{{ auth()->user()->name }}</strong></div>
-                <span class="badge bg-warning text-dark text-uppercase mt-1" style="font-size: 0.65rem;">
-                    {{ str_replace('_', ' ', auth()->user()->role) }}
-                </span>
+                @if(auth()->user()->role === 'content_manager')
+                    <span class="badge bg-info text-dark text-uppercase mt-1" style="font-size: 0.65rem; letter-spacing: 0.05em;">
+                        <i class="bi bi-journal-richtext me-1"></i> Content Manager
+                    </span>
+                    <div class="text-light-50 mt-1" style="font-size: 0.72rem; color: #94a3b8;">Website & CMS Editor</div>
+                @elseif(auth()->user()->role === 'member_manager')
+                    <span class="badge bg-warning text-dark text-uppercase mt-1" style="font-size: 0.65rem; letter-spacing: 0.05em;">
+                        <i class="bi bi-people-fill me-1"></i> Member Manager
+                    </span>
+                    <div class="text-light-50 mt-1" style="font-size: 0.72rem; color: #94a3b8;">Membership Secretary</div>
+                @else
+                    <span class="badge bg-primary text-uppercase mt-1" style="font-size: 0.65rem; letter-spacing: 0.05em;">
+                        <i class="bi bi-shield-fill-check me-1"></i> Super Admin
+                    </span>
+                    <div class="text-light-50 mt-1" style="font-size: 0.72rem; color: #94a3b8;">Full Administrative Access</div>
+                @endif
             </div>
         </aside>
 
@@ -130,6 +149,12 @@
                     </span>
                 </div>
                 <div class="d-flex align-items-center gap-3">
+                    <span class="badge bg-light text-navy border py-2 px-3 small d-none d-md-inline-block">
+                        <i class="bi bi-person-badge text-warning me-1"></i>
+                        <strong>{{ auth()->user()->name }}</strong>
+                        <span class="text-muted ms-1">({{ str_replace('_', ' ', auth()->user()->role) }})</span>
+                    </span>
+
                     <a href="{{ route('home') }}" target="_blank" class="btn btn-sm btn-outline-secondary">
                         <i class="bi bi-box-arrow-up-right me-1"></i> View Website
                     </a>

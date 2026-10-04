@@ -17,21 +17,152 @@
     <!-- Role Explanation Banner -->
     <div class="row g-3 mb-4">
         <div class="col-md-4">
-            <div class="p-3 bg-white rounded-3 border-start border-4 border-primary shadow-sm small">
+            <div class="p-3 bg-white rounded-3 border-start border-4 border-primary shadow-sm small h-100">
                 <strong class="text-navy d-block mb-1"><i class="bi bi-shield-fill-check text-primary me-1"></i> Super Admin</strong>
-                Full unrestricted administrative control over members, content, finances, and system settings.
+                Full unrestricted administrative control over members, content, governance, finances, and system settings.
             </div>
         </div>
         <div class="col-md-4">
-            <div class="p-3 bg-white rounded-3 border-start border-4 border-warning shadow-sm small">
+            <div class="p-3 bg-white rounded-3 border-start border-4 border-warning shadow-sm small h-100">
                 <strong class="text-navy d-block mb-1"><i class="bi bi-people-fill text-warning me-1"></i> Member Manager</strong>
-                Can manage member applications, approve new members, and manage membership categories.
+                Focused on membership lifecycle: reviews applications, approves/rejects members, and manages membership tiers and committees.
             </div>
         </div>
         <div class="col-md-4">
-            <div class="p-3 bg-white rounded-3 border-start border-4 border-info shadow-sm small">
+            <div class="p-3 bg-white rounded-3 border-start border-4 border-info shadow-sm small h-100">
                 <strong class="text-navy d-block mb-1"><i class="bi bi-journal-richtext text-info me-1"></i> Content Manager</strong>
-                Can publish news, events, notices, gallery albums, documents, and edit static website CMS pages.
+                Specialized in website editorial: edits CMS static pages, publishes news stories, notice board circulars, photo gallery, events, and documents.
+            </div>
+        </div>
+    </div>
+
+    <!-- Permissions Specification Matrix Accordion -->
+    <div class="card border-0 shadow-sm rounded-4 mb-4 bg-white overflow-hidden">
+        <div class="card-header bg-light border-0 py-3 px-4 d-flex justify-content-between align-items-center">
+            <div class="d-flex align-items-center gap-2">
+                <i class="bi bi-shield-shaded text-warning fs-5"></i>
+                <h6 class="font-serif text-navy mb-0 fw-bold">Role Permissions & Access Control Specification</h6>
+            </div>
+            <button class="btn btn-sm btn-outline-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#permissionsMatrixCollapse">
+                <i class="bi bi-arrows-expand me-1"></i> Toggle Detailed Matrix
+            </button>
+        </div>
+        <div class="collapse show" id="permissionsMatrixCollapse">
+            <div class="table-responsive">
+                <table class="table table-bordered align-middle mb-0 small text-center">
+                    <thead class="bg-light text-navy text-uppercase" style="font-size: 0.72rem;">
+                        <tr>
+                            <th class="text-start" style="width: 35%;">System Feature / Administrative Module</th>
+                            <th style="width: 20%;" class="bg-info bg-opacity-10 text-dark">
+                                <i class="bi bi-journal-richtext me-1"></i> Content Manager
+                            </th>
+                            <th style="width: 20%;" class="bg-warning bg-opacity-10 text-dark">
+                                <i class="bi bi-people-fill me-1"></i> Member Manager
+                            </th>
+                            <th style="width: 25%;" class="bg-primary bg-opacity-10 text-dark">
+                                <i class="bi bi-shield-fill-check me-1"></i> Super Admin
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="text-start fw-semibold">
+                                <i class="bi bi-layout-text-window-reverse text-info me-2"></i> Website Pages CMS (About, Mission, President Message, Constitution)
+                            </td>
+                            <td class="text-success fw-bold bg-info bg-opacity-10"><i class="bi bi-check-circle-fill me-1"></i> Full Editorial</td>
+                            <td class="text-danger"><i class="bi bi-x-circle me-1"></i> No Access</td>
+                            <td class="text-success fw-bold bg-primary bg-opacity-10"><i class="bi bi-check-circle-fill me-1"></i> Full Access</td>
+                        </tr>
+                        <tr>
+                            <td class="text-start fw-semibold">
+                                <i class="bi bi-newspaper text-info me-2"></i> News Articles & Club Activities (Write, Publish, Categorize)
+                            </td>
+                            <td class="text-success fw-bold bg-info bg-opacity-10"><i class="bi bi-check-circle-fill me-1"></i> Full Editorial</td>
+                            <td class="text-danger"><i class="bi bi-x-circle me-1"></i> No Access</td>
+                            <td class="text-success fw-bold bg-primary bg-opacity-10"><i class="bi bi-check-circle-fill me-1"></i> Full Access</td>
+                        </tr>
+                        <tr>
+                            <td class="text-start fw-semibold">
+                                <i class="bi bi-megaphone text-info me-2"></i> Notice Board Circulars & PDF Attachments
+                            </td>
+                            <td class="text-success fw-bold bg-info bg-opacity-10"><i class="bi bi-check-circle-fill me-1"></i> Full Editorial</td>
+                            <td class="text-danger"><i class="bi bi-x-circle me-1"></i> No Access</td>
+                            <td class="text-success fw-bold bg-primary bg-opacity-10"><i class="bi bi-check-circle-fill me-1"></i> Full Access</td>
+                        </tr>
+                        <tr>
+                            <td class="text-start fw-semibold">
+                                <i class="bi bi-images text-info me-2"></i> Photo Gallery & Albums (Create Albums, Upload Photos)
+                            </td>
+                            <td class="text-success fw-bold bg-info bg-opacity-10"><i class="bi bi-check-circle-fill me-1"></i> Full Editorial</td>
+                            <td class="text-danger"><i class="bi bi-x-circle me-1"></i> No Access</td>
+                            <td class="text-success fw-bold bg-primary bg-opacity-10"><i class="bi bi-check-circle-fill me-1"></i> Full Access</td>
+                        </tr>
+                        <tr>
+                            <td class="text-start fw-semibold">
+                                <i class="bi bi-file-earmark-arrow-down text-info me-2"></i> Official Documents, By-Laws & Forms
+                            </td>
+                            <td class="text-success fw-bold bg-info bg-opacity-10"><i class="bi bi-check-circle-fill me-1"></i> Full Editorial</td>
+                            <td class="text-danger"><i class="bi bi-x-circle me-1"></i> No Access</td>
+                            <td class="text-success fw-bold bg-primary bg-opacity-10"><i class="bi bi-check-circle-fill me-1"></i> Full Access</td>
+                        </tr>
+                        <tr>
+                            <td class="text-start fw-semibold">
+                                <i class="bi bi-calendar-event text-success me-2"></i> Club Events & RSVP Attendee Lists
+                            </td>
+                            <td class="text-success fw-bold bg-info bg-opacity-10"><i class="bi bi-check-circle-fill me-1"></i> Manage Events</td>
+                            <td class="text-success fw-bold bg-warning bg-opacity-10"><i class="bi bi-check-circle-fill me-1"></i> Manage Events</td>
+                            <td class="text-success fw-bold bg-primary bg-opacity-10"><i class="bi bi-check-circle-fill me-1"></i> Full Access</td>
+                        </tr>
+                        <tr>
+                            <td class="text-start fw-semibold">
+                                <i class="bi bi-envelope text-navy me-2"></i> Contact Inquiries & Feedback Messages
+                            </td>
+                            <td class="text-success fw-bold bg-info bg-opacity-10"><i class="bi bi-check-circle-fill me-1"></i> Read & Note</td>
+                            <td class="text-success fw-bold bg-warning bg-opacity-10"><i class="bi bi-check-circle-fill me-1"></i> Read & Note</td>
+                            <td class="text-success fw-bold bg-primary bg-opacity-10"><i class="bi bi-check-circle-fill me-1"></i> Full Access</td>
+                        </tr>
+                        <tr>
+                            <td class="text-start fw-semibold">
+                                <i class="bi bi-people text-warning me-2"></i> Member Applications, Approvals & Dossiers
+                            </td>
+                            <td class="text-danger"><i class="bi bi-x-circle me-1"></i> Restricted (403)</td>
+                            <td class="text-success fw-bold bg-warning bg-opacity-10"><i class="bi bi-check-circle-fill me-1"></i> Full Control</td>
+                            <td class="text-success fw-bold bg-primary bg-opacity-10"><i class="bi bi-check-circle-fill me-1"></i> Full Access</td>
+                        </tr>
+                        <tr>
+                            <td class="text-start fw-semibold">
+                                <i class="bi bi-award text-warning me-2"></i> Membership Types & Category Fees
+                            </td>
+                            <td class="text-danger"><i class="bi bi-x-circle me-1"></i> Restricted (403)</td>
+                            <td class="text-success fw-bold bg-warning bg-opacity-10"><i class="bi bi-check-circle-fill me-1"></i> Full Control</td>
+                            <td class="text-success fw-bold bg-primary bg-opacity-10"><i class="bi bi-check-circle-fill me-1"></i> Full Access</td>
+                        </tr>
+                        <tr>
+                            <td class="text-start fw-semibold">
+                                <i class="bi bi-diagram-3 text-warning me-2"></i> Executive Committee Terms & Appointments
+                            </td>
+                            <td class="text-danger"><i class="bi bi-x-circle me-1"></i> Restricted (403)</td>
+                            <td class="text-success fw-bold bg-warning bg-opacity-10"><i class="bi bi-check-circle-fill me-1"></i> Full Control</td>
+                            <td class="text-success fw-bold bg-primary bg-opacity-10"><i class="bi bi-check-circle-fill me-1"></i> Full Access</td>
+                        </tr>
+                        <tr>
+                            <td class="text-start fw-semibold">
+                                <i class="bi bi-sliders text-danger me-2"></i> General System Settings & Secretariats
+                            </td>
+                            <td class="text-danger"><i class="bi bi-x-circle me-1"></i> Restricted (403)</td>
+                            <td class="text-danger"><i class="bi bi-x-circle me-1"></i> Restricted (403)</td>
+                            <td class="text-success fw-bold bg-primary bg-opacity-10"><i class="bi bi-check-circle-fill me-1"></i> Full Access</td>
+                        </tr>
+                        <tr>
+                            <td class="text-start fw-semibold">
+                                <i class="bi bi-shield-lock text-danger me-2"></i> Staff Admin Accounts & Role Allocation
+                            </td>
+                            <td class="text-danger"><i class="bi bi-x-circle me-1"></i> Restricted (403)</td>
+                            <td class="text-danger"><i class="bi bi-x-circle me-1"></i> Restricted (403)</td>
+                            <td class="text-success fw-bold bg-primary bg-opacity-10"><i class="bi bi-check-circle-fill me-1"></i> Full Access</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>

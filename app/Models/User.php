@@ -63,4 +63,15 @@ class User extends Authenticatable
     {
         return $this->role === 'member';
     }
+
+    public function getRoleTitleAttribute(): string
+    {
+        return match($this->role) {
+            'super_admin' => 'Super Administrator',
+            'member_manager' => 'Member Manager',
+            'content_manager' => 'Content Manager',
+            'member' => 'Club Member',
+            default => ucfirst(str_replace('_', ' ', $this->role)),
+        };
+    }
 }

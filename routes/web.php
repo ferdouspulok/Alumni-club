@@ -129,93 +129,112 @@ Route::prefix('member')->name('member.')->middleware('member')->group(function (
 Route::prefix('admin')->name('admin.')->middleware('admin')->group(function () {
     Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
 
-    // Members
-    Route::get('/members', [MemberAdminController::class, 'index'])->name('members.index');
-    Route::get('/members/pending', [MemberAdminController::class, 'pending'])->name('members.pending');
-    Route::get('/members/create', [MemberAdminController::class, 'create'])->name('members.create');
-    Route::post('/members', [MemberAdminController::class, 'store'])->name('members.store');
-    Route::get('/members/export', [MemberAdminController::class, 'exportCsv'])->name('members.export');
-    Route::get('/members/{member}', [MemberAdminController::class, 'show'])->name('members.show');
-    Route::get('/members/{member}/edit', [MemberAdminController::class, 'edit'])->name('members.edit');
-    Route::put('/members/{member}', [MemberAdminController::class, 'update'])->name('members.update');
-    Route::delete('/members/{member}', [MemberAdminController::class, 'destroy'])->name('members.destroy');
-    Route::post('/members/{member}/approve', [MemberAdminController::class, 'approve'])->name('members.approve');
-    Route::post('/members/{member}/reject', [MemberAdminController::class, 'reject'])->name('members.reject');
-    Route::post('/members/{member}/reset-password', [MemberAdminController::class, 'resetPassword'])->name('members.reset-password');
+    // ----------------------------------------------------
+    // Membership & Governance (Super Admin & Member Manager)
+    // ----------------------------------------------------
+    Route::middleware('role:super_admin,member_manager')->group(function () {
+        // Members
+        Route::get('/members', [MemberAdminController::class, 'index'])->name('members.index');
+        Route::get('/members/pending', [MemberAdminController::class, 'pending'])->name('members.pending');
+        Route::get('/members/create', [MemberAdminController::class, 'create'])->name('members.create');
+        Route::post('/members', [MemberAdminController::class, 'store'])->name('members.store');
+        Route::get('/members/export', [MemberAdminController::class, 'exportCsv'])->name('members.export');
+        Route::get('/members/{member}', [MemberAdminController::class, 'show'])->name('members.show');
+        Route::get('/members/{member}/edit', [MemberAdminController::class, 'edit'])->name('members.edit');
+        Route::put('/members/{member}', [MemberAdminController::class, 'update'])->name('members.update');
+        Route::delete('/members/{member}', [MemberAdminController::class, 'destroy'])->name('members.destroy');
+        Route::post('/members/{member}/approve', [MemberAdminController::class, 'approve'])->name('members.approve');
+        Route::post('/members/{member}/reject', [MemberAdminController::class, 'reject'])->name('members.reject');
+        Route::post('/members/{member}/reset-password', [MemberAdminController::class, 'resetPassword'])->name('members.reset-password');
 
-    // Membership Types
-    Route::get('/membership-types', [MembershipTypeAdminController::class, 'index'])->name('membership-types.index');
-    Route::post('/membership-types', [MembershipTypeAdminController::class, 'store'])->name('membership-types.store');
-    Route::put('/membership-types/{membershipType}', [MembershipTypeAdminController::class, 'update'])->name('membership-types.update');
-    Route::delete('/membership-types/{membershipType}', [MembershipTypeAdminController::class, 'destroy'])->name('membership-types.destroy');
+        // Membership Types
+        Route::get('/membership-types', [MembershipTypeAdminController::class, 'index'])->name('membership-types.index');
+        Route::post('/membership-types', [MembershipTypeAdminController::class, 'store'])->name('membership-types.store');
+        Route::put('/membership-types/{membershipType}', [MembershipTypeAdminController::class, 'update'])->name('membership-types.update');
+        Route::delete('/membership-types/{membershipType}', [MembershipTypeAdminController::class, 'destroy'])->name('membership-types.destroy');
 
-    // Committee Management
-    Route::get('/committees', [CommitteeAdminController::class, 'index'])->name('committees.index');
-    Route::post('/committees', [CommitteeAdminController::class, 'store'])->name('committees.store');
-    Route::get('/committees/{committee}', [CommitteeAdminController::class, 'show'])->name('committees.show');
-    Route::put('/committees/{committee}', [CommitteeAdminController::class, 'update'])->name('committees.update');
-    Route::delete('/committees/{committee}', [CommitteeAdminController::class, 'destroy'])->name('committees.destroy');
-    Route::post('/committees/{committee}/members', [CommitteeAdminController::class, 'addMember'])->name('committees.members.store');
-    Route::delete('/committees/members/{committeeMember}', [CommitteeAdminController::class, 'removeMember'])->name('committees.members.destroy');
+        // Committee Management
+        Route::get('/committees', [CommitteeAdminController::class, 'index'])->name('committees.index');
+        Route::post('/committees', [CommitteeAdminController::class, 'store'])->name('committees.store');
+        Route::get('/committees/{committee}', [CommitteeAdminController::class, 'show'])->name('committees.show');
+        Route::put('/committees/{committee}', [CommitteeAdminController::class, 'update'])->name('committees.update');
+        Route::delete('/committees/{committee}', [CommitteeAdminController::class, 'destroy'])->name('committees.destroy');
+        Route::post('/committees/{committee}/members', [CommitteeAdminController::class, 'addMember'])->name('committees.members.store');
+        Route::delete('/committees/members/{committeeMember}', [CommitteeAdminController::class, 'removeMember'])->name('committees.members.destroy');
+    });
 
-    // Events
-    Route::get('/events', [EventAdminController::class, 'index'])->name('events.index');
-    Route::get('/events/create', [EventAdminController::class, 'create'])->name('events.create');
-    Route::post('/events', [EventAdminController::class, 'store'])->name('events.store');
-    Route::get('/events/{event}/edit', [EventAdminController::class, 'edit'])->name('events.edit');
-    Route::put('/events/{event}', [EventAdminController::class, 'update'])->name('events.update');
-    Route::delete('/events/{event}', [EventAdminController::class, 'destroy'])->name('events.destroy');
-    Route::get('/events/registrations/list', [EventAdminController::class, 'registrations'])->name('events.registrations');
-    Route::get('/events/registrations/export', [EventAdminController::class, 'exportRegistrations'])->name('events.registrations.export');
+    // ----------------------------------------------------
+    // Editorial & Content Management (Content Manager & Super Admin)
+    // ----------------------------------------------------
+    Route::middleware('role:super_admin,content_manager')->group(function () {
+        // News
+        Route::get('/news', [NewsAdminController::class, 'index'])->name('news.index');
+        Route::get('/news/create', [NewsAdminController::class, 'create'])->name('news.create');
+        Route::post('/news', [NewsAdminController::class, 'store'])->name('news.store');
+        Route::get('/news/{news}/edit', [NewsAdminController::class, 'edit'])->name('news.edit');
+        Route::put('/news/{news}', [NewsAdminController::class, 'update'])->name('news.update');
+        Route::delete('/news/{news}', [NewsAdminController::class, 'destroy'])->name('news.destroy');
+        Route::post('/news/categories', [NewsAdminController::class, 'storeCategory'])->name('news.categories.store');
 
-    // News
-    Route::get('/news', [NewsAdminController::class, 'index'])->name('news.index');
-    Route::get('/news/create', [NewsAdminController::class, 'create'])->name('news.create');
-    Route::post('/news', [NewsAdminController::class, 'store'])->name('news.store');
-    Route::get('/news/{news}/edit', [NewsAdminController::class, 'edit'])->name('news.edit');
-    Route::put('/news/{news}', [NewsAdminController::class, 'update'])->name('news.update');
-    Route::delete('/news/{news}', [NewsAdminController::class, 'destroy'])->name('news.destroy');
-    Route::post('/news/categories', [NewsAdminController::class, 'storeCategory'])->name('news.categories.store');
+        // Notices
+        Route::get('/notices', [NoticeAdminController::class, 'index'])->name('notices.index');
+        Route::get('/notices/create', [NoticeAdminController::class, 'create'])->name('notices.create');
+        Route::post('/notices', [NoticeAdminController::class, 'store'])->name('notices.store');
+        Route::get('/notices/{notice}/edit', [NoticeAdminController::class, 'edit'])->name('notices.edit');
+        Route::put('/notices/{notice}', [NoticeAdminController::class, 'update'])->name('notices.update');
+        Route::delete('/notices/{notice}', [NoticeAdminController::class, 'destroy'])->name('notices.destroy');
 
-    // Notices
-    Route::get('/notices', [NoticeAdminController::class, 'index'])->name('notices.index');
-    Route::get('/notices/create', [NoticeAdminController::class, 'create'])->name('notices.create');
-    Route::post('/notices', [NoticeAdminController::class, 'store'])->name('notices.store');
-    Route::get('/notices/{notice}/edit', [NoticeAdminController::class, 'edit'])->name('notices.edit');
-    Route::put('/notices/{notice}', [NoticeAdminController::class, 'update'])->name('notices.update');
-    Route::delete('/notices/{notice}', [NoticeAdminController::class, 'destroy'])->name('notices.destroy');
+        // Photo Gallery
+        Route::get('/gallery', [GalleryAdminController::class, 'index'])->name('gallery.index');
+        Route::post('/gallery', [GalleryAdminController::class, 'store'])->name('gallery.store');
+        Route::get('/gallery/{gallery}', [GalleryAdminController::class, 'show'])->name('gallery.show');
+        Route::post('/gallery/{gallery}/upload', [GalleryAdminController::class, 'uploadImages'])->name('gallery.upload');
+        Route::delete('/gallery/images/{image}', [GalleryAdminController::class, 'deleteImage'])->name('gallery.images.destroy');
+        Route::delete('/gallery/{gallery}', [GalleryAdminController::class, 'destroy'])->name('gallery.destroy');
 
-    // Photo Gallery
-    Route::get('/gallery', [GalleryAdminController::class, 'index'])->name('gallery.index');
-    Route::post('/gallery', [GalleryAdminController::class, 'store'])->name('gallery.store');
-    Route::get('/gallery/{gallery}', [GalleryAdminController::class, 'show'])->name('gallery.show');
-    Route::post('/gallery/{gallery}/upload', [GalleryAdminController::class, 'uploadImages'])->name('gallery.upload');
-    Route::delete('/gallery/images/{image}', [GalleryAdminController::class, 'deleteImage'])->name('gallery.images.destroy');
-    Route::delete('/gallery/{gallery}', [GalleryAdminController::class, 'destroy'])->name('gallery.destroy');
+        // Documents
+        Route::get('/documents', [DocumentAdminController::class, 'index'])->name('documents.index');
+        Route::post('/documents', [DocumentAdminController::class, 'store'])->name('documents.store');
+        Route::delete('/documents/{document}', [DocumentAdminController::class, 'destroy'])->name('documents.destroy');
 
-    // Documents
-    Route::get('/documents', [DocumentAdminController::class, 'index'])->name('documents.index');
-    Route::post('/documents', [DocumentAdminController::class, 'store'])->name('documents.store');
-    Route::delete('/documents/{document}', [DocumentAdminController::class, 'destroy'])->name('documents.destroy');
+        // Static Pages CMS
+        Route::get('/pages', [PageAdminController::class, 'index'])->name('pages.index');
+        Route::get('/pages/{page}/edit', [PageAdminController::class, 'edit'])->name('pages.edit');
+        Route::put('/pages/{page}', [PageAdminController::class, 'update'])->name('pages.update');
+    });
 
-    // Static Pages CMS
-    Route::get('/pages', [PageAdminController::class, 'index'])->name('pages.index');
-    Route::get('/pages/{page}/edit', [PageAdminController::class, 'edit'])->name('pages.edit');
-    Route::put('/pages/{page}', [PageAdminController::class, 'update'])->name('pages.update');
+    // ----------------------------------------------------
+    // Events & RSVPs (Super Admin, Content Manager & Member Manager)
+    // ----------------------------------------------------
+    Route::middleware('role:super_admin,content_manager,member_manager')->group(function () {
+        Route::get('/events', [EventAdminController::class, 'index'])->name('events.index');
+        Route::get('/events/create', [EventAdminController::class, 'create'])->name('events.create');
+        Route::post('/events', [EventAdminController::class, 'store'])->name('events.store');
+        Route::get('/events/{event}/edit', [EventAdminController::class, 'edit'])->name('events.edit');
+        Route::put('/events/{event}', [EventAdminController::class, 'update'])->name('events.update');
+        Route::delete('/events/{event}', [EventAdminController::class, 'destroy'])->name('events.destroy');
+        Route::get('/events/registrations/list', [EventAdminController::class, 'registrations'])->name('events.registrations');
+        Route::get('/events/registrations/export', [EventAdminController::class, 'exportRegistrations'])->name('events.registrations.export');
+    });
 
-    // Contact Messages
+    // ----------------------------------------------------
+    // Contact Messages (All Administrators)
+    // ----------------------------------------------------
     Route::get('/messages', [ContactMessageAdminController::class, 'index'])->name('messages.index');
     Route::get('/messages/{message}', [ContactMessageAdminController::class, 'show'])->name('messages.show');
     Route::post('/messages/{message}/notes', [ContactMessageAdminController::class, 'updateNotes'])->name('messages.notes');
     Route::delete('/messages/{message}', [ContactMessageAdminController::class, 'destroy'])->name('messages.destroy');
 
-    // Settings
-    Route::get('/settings', [SettingAdminController::class, 'index'])->name('settings.index');
-    Route::post('/settings', [SettingAdminController::class, 'update'])->name('settings.update');
+    // ----------------------------------------------------
+    // System Settings & Admin Users (Super Admin Only)
+    // ----------------------------------------------------
+    Route::middleware('role:super_admin')->group(function () {
+        Route::get('/settings', [SettingAdminController::class, 'index'])->name('settings.index');
+        Route::post('/settings', [SettingAdminController::class, 'update'])->name('settings.update');
 
-    // Admin Users
-    Route::get('/users', [AdminUserController::class, 'index'])->name('users.index');
-    Route::post('/users', [AdminUserController::class, 'store'])->name('users.store');
-    Route::put('/users/{user}', [AdminUserController::class, 'update'])->name('users.update');
-    Route::delete('/users/{user}', [AdminUserController::class, 'destroy'])->name('users.destroy');
+        Route::get('/users', [AdminUserController::class, 'index'])->name('users.index');
+        Route::post('/users', [AdminUserController::class, 'store'])->name('users.store');
+        Route::put('/users/{user}', [AdminUserController::class, 'update'])->name('users.update');
+        Route::delete('/users/{user}', [AdminUserController::class, 'destroy'])->name('users.destroy');
+    });
 });
