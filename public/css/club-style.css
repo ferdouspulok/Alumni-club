@@ -314,41 +314,77 @@ h1, h2, h3, h4, .club-heading, .font-regal {
     transform: translateY(-2px);
 }
 
-/* Soft Eyepleasing Hero Section with Liquid Backdrop */
+/* Soft Eyepleasing Hero Section with Premium Backdrop */
 .club-hero {
     position: relative;
     background: #091220;
     color: #ffffff;
     padding: 110px 0 130px;
     overflow: hidden;
+    border-bottom: 3px solid var(--club-gold);
 }
-.club-hero::before {
-    content: '';
+.hero-bg-slider {
     position: absolute;
-    top: -20%;
-    left: 20%;
-    width: 600px;
-    height: 600px;
-    background: radial-gradient(circle, rgba(197, 160, 89, 0.22) 0%, transparent 70%);
-    filter: blur(60px);
-    pointer-events: none;
-    border-radius: 50%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    overflow: hidden;
 }
-.club-hero::after {
-    content: '';
+.hero-slide-img {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center center;
+    transform: scale(1);
+    transition: transform 7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.carousel-item.active .hero-slide-img {
+    transform: scale(1.08);
+}
+/* Highlighted / Reduced Darkness Overlay */
+.hero-overlay {
     position: absolute;
-    bottom: -15%;
-    right: 5%;
-    width: 500px;
-    height: 500px;
-    background: radial-gradient(circle, rgba(24, 40, 68, 0.5) 0%, transparent 70%);
-    filter: blur(70px);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(6, 13, 24, 0.48) 0%, rgba(10, 20, 36, 0.22) 50%, rgba(6, 13, 24, 0.44) 100%);
     pointer-events: none;
-    border-radius: 50%;
+    z-index: 2;
+}
+/* Hero Carousel Indicators */
+.hero-slider-indicators {
+    position: absolute;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+    display: flex;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.hero-slider-indicators button {
+    width: 28px;
+    height: 5px;
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255, 0.4);
+    border: none;
+    transition: all 0.35s ease;
+    cursor: pointer;
+    padding: 0;
+}
+.hero-slider-indicators button.active {
+    width: 48px;
+    background-color: var(--club-gold);
+    box-shadow: 0 0 12px rgba(197, 160, 89, 0.85);
 }
 .club-hero-content {
     position: relative;
-    z-index: 2;
+    z-index: 3;
 }
 .club-crest-hero {
     height: 115px;
@@ -361,6 +397,7 @@ h1, h2, h3, h4, .club-heading, .font-regal {
     margin-bottom: 12px;
     letter-spacing: 0.04em;
     line-height: 1.15;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
 }
 .club-hero-tagline {
     font-family: 'Cinzel', serif;
@@ -550,6 +587,55 @@ h1, h2, h3, h4, .club-heading, .font-regal {
 .president-card:hover {
     box-shadow: var(--glass-shadow-hover);
     border-color: var(--liquid-gold);
+}
+
+/* Core Values Navy Blue Section */
+.core-values-section {
+    background: linear-gradient(135deg, #050b14 0%, #0a1424 50%, #102035 100%);
+    border-top: 3px solid var(--club-gold);
+    border-bottom: 3px solid var(--club-gold);
+    position: relative;
+    overflow: hidden;
+    color: #ffffff;
+}
+.core-values-section::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    right: 10%;
+    width: 380px;
+    height: 380px;
+    background: radial-gradient(circle, rgba(197, 160, 89, 0.16) 0%, transparent 70%);
+    filter: blur(55px);
+    pointer-events: none;
+    border-radius: 50%;
+}
+.core-values-section::after {
+    content: '';
+    position: absolute;
+    bottom: -50px;
+    left: 8%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(16, 32, 53, 0.6) 0%, transparent 70%);
+    filter: blur(65px);
+    pointer-events: none;
+    border-radius: 50%;
+}
+.core-value-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(197, 160, 89, 0.25);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.28);
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.core-value-card:hover {
+    transform: translateY(-6px);
+    background: rgba(255, 255, 255, 0.09);
+    border-color: var(--club-gold);
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45), 0 0 20px rgba(197, 160, 89, 0.22);
 }
 
 /* Official Membership Application Form Styling (Mirroring Provided PDF) */

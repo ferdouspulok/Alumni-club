@@ -5,8 +5,38 @@
 
 @section('content')
 
-    <!-- Liquid Glass Hero Section -->
+    <!-- Highlighted Hero Section with Sliding Background Images -->
     <section class="club-hero position-relative overflow-hidden">
+        <!-- Background Slider Carousel (4 High-Res Sliding Backdrops - Wide Angle & Top Views) -->
+        <div class="hero-bg-slider">
+            <div id="heroBgCarousel" class="carousel slide carousel-fade h-100" data-bs-ride="carousel" data-bs-interval="5000" data-bs-pause="false">
+                <div class="carousel-inner h-100">
+                    <div class="carousel-item active h-100">
+                        <div class="hero-slide-img" style="background-image: url('{{ asset('images/hero-slide-1.jpg') }}');"></div>
+                    </div>
+                    <div class="carousel-item h-100">
+                        <div class="hero-slide-img" style="background-image: url('{{ asset('images/hero-slide-2.jpg') }}');"></div>
+                    </div>
+                    <div class="carousel-item h-100">
+                        <div class="hero-slide-img" style="background-image: url('{{ asset('images/hero-slide-3.jpg') }}');"></div>
+                    </div>
+                    <div class="carousel-item h-100">
+                        <div class="hero-slide-img" style="background-image: url('{{ asset('images/hero-slide-4.jpg') }}');"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- Highlighted / Reduced Darkness Overlay -->
+            <div class="hero-overlay"></div>
+        </div>
+
+        <!-- Slider Indicators -->
+        <div class="hero-slider-indicators">
+            <button type="button" data-bs-target="#heroBgCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#heroBgCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#heroBgCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            <button type="button" data-bs-target="#heroBgCarousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
+        </div>
+
         <div class="container club-hero-content position-relative py-4">
             <div class="row align-items-center g-5">
                 <div class="col-lg-7 text-center text-lg-start">
@@ -133,28 +163,49 @@
                 </div>
 
                 <div class="col-lg-5">
-                    <div class="president-card position-relative overflow-hidden shadow-sm" style="border: 1.5px solid rgba(197, 160, 89, 0.35);">
-                        <div class="d-flex align-items-center gap-3 mb-3">
-                            <div style="width: 82px; height: 82px; border-radius: 50%; border: 3px solid var(--liquid-gold); overflow: hidden; flex-shrink: 0; box-shadow: 0 4px 14px rgba(197, 160, 89, 0.35);">
-                                <img src="{{ asset(\App\Models\Setting::get('president_photo', 'images/president.jpg')) }}" alt="Chairman Photo" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="president-card position-relative overflow-hidden shadow-sm p-4" style="border: 1.5px solid rgba(197, 160, 89, 0.4); border-top: 4px solid var(--liquid-gold) !important; background: linear-gradient(180deg, #ffffff 0%, #fcfbf7 100%);">
+                        <!-- Top Header with Large Portrait -->
+                        <div class="d-flex flex-column flex-sm-row align-items-center align-items-sm-start gap-3 gap-md-4 mb-3 pb-3 border-bottom border-light-subtle">
+                            <!-- Large President Portrait with Gold Frame -->
+                            <div class="position-relative flex-shrink-0 text-center">
+                                <div style="width: 130px; height: 155px; border-radius: 18px; border: 3px solid var(--liquid-gold); overflow: hidden; box-shadow: 0 10px 24px rgba(197, 160, 89, 0.3); background: #0a1424;">
+                                    <img src="{{ asset(\App\Models\Setting::get('president_photo', 'images/president.jpg')) }}" alt="{{ \App\Models\Setting::get('president_name', 'President Photo') }}" style="width: 100%; height: 100%; object-fit: cover; object-position: top center;">
+                                </div>
+                                <span class="position-absolute bottom-0 start-50 translate-middle-x badge bg-warning text-dark text-uppercase fw-bold shadow-sm" style="font-size: 0.68rem; letter-spacing: 0.05em; transform: translate(-50%, 35%) !important; white-space: nowrap; border: 2px solid #fff; padding: 4px 10px;">
+                                    President
+                                </span>
                             </div>
-                            <div>
-                                <span class="badge bg-warning text-dark text-uppercase fw-bold mb-1" style="font-size: 0.68rem; letter-spacing: 0.05em;">Executive Address</span>
-                                <h5 class="mb-0 text-navy font-serif fw-bold">Chairman's Message</h5>
-                                <span class="text-muted small">Chatkhil Elite Club Ltd.</span>
+
+                            <!-- President Info -->
+                            <div class="text-center text-sm-start pt-2 pt-sm-0">
+                                <span class="badge bg-warning bg-opacity-15 text-dark border border-warning text-uppercase fw-bold mb-1" style="font-size: 0.68rem; letter-spacing: 0.06em;">
+                                    President's Address
+                                </span>
+                                <h5 class="mb-1 text-navy font-serif fw-bold" style="font-size: 1.15rem; line-height: 1.3;">
+                                    {{ \App\Models\Setting::get('president_name', 'ANISUR RAHMAN (SHEPON)') }}
+                                </h5>
+                                <div class="text-muted small fw-semibold mb-2">
+                                    {{ \App\Models\Setting::get('president_title', 'President, Chatkhil Elite Club Ltd.') }}
+                                </div>
+                                <span class="badge bg-light text-navy border px-2 py-1 small" style="font-size: 0.72rem;">
+                                    <i class="bi bi-shield-check text-warning me-1"></i> Executive Board
+                                </span>
                             </div>
                         </div>
+
+                        <!-- Message Body -->
                         <p class="fw-bold text-navy mb-2" style="font-size: 0.98rem;">Welcome to Chatkhil Elite Club Ltd.</p>
-                        <p class="small text-muted mb-2" style="line-height: 1.7; font-size: 0.92rem;">
-                            "Our club was founded on the belief that strong communities are built through friendship, cooperation, mutual respect, and a willingness to contribute. We are committed to creating a platform where our members can connect with one another, enjoy meaningful activities, develop their potential, and contribute positively to society."
+                        <p class="small text-muted mb-3" style="line-height: 1.75; font-size: 0.91rem;">
+                            {{ \App\Models\Setting::get('president_message_short', 'Our club was founded on the belief that strong communities are built through friendship, cooperation, mutual respect, and a willingness to contribute. We are committed to creating a platform where our members can connect with one another, enjoy meaningful activities, develop their potential, and contribute positively to society.') }}
                         </p>
                         <div class="p-2 px-3 rounded-2 mb-3 small" style="background: rgba(197, 160, 89, 0.12); border-left: 3px solid var(--liquid-gold);">
                             <span class="fst-italic text-navy fw-semibold">
                                 “Together, we can connect, contribute, and create a lasting positive Impact.”
                             </span>
                         </div>
-                        <a href="{{ route('about.chairman') }}" class="text-navy fw-bold small text-decoration-none d-inline-flex align-items-center gap-1">
-                            Read Complete Message <i class="bi bi-arrow-right text-warning"></i>
+                        <a href="{{ route('about.president') }}" class="btn btn-sm btn-club-gold px-3 py-2 fw-bold text-decoration-none d-inline-flex align-items-center gap-2">
+                            <span>Read Complete Message</span>
+                            <i class="bi bi-arrow-right"></i>
                         </a>
                     </div>
                 </div>
@@ -235,25 +286,25 @@
     </section>
 
     <!-- Our Core Values Section -->
-    <section class="py-5" style="background: #f8fafc; border-top: 1px solid rgba(197, 160, 89, 0.2); border-bottom: 1px solid rgba(197, 160, 89, 0.2);">
-        <div class="container py-4">
+    <section class="py-5 core-values-section">
+        <div class="container py-4 position-relative" style="z-index: 2;">
             <div class="section-title-wrap mb-5">
-                <span class="section-subtitle">Principles We Stand For</span>
-                <h2 class="section-main-title">Our Core Values</h2>
-                <p class="text-muted mt-2" style="max-width: 650px; margin: 0 auto; font-size: 0.95rem;">
+                <span class="section-subtitle text-warning" style="letter-spacing: 0.12em;">Principles We Stand For</span>
+                <h2 class="section-main-title text-white">Our Core Values</h2>
+                <p class="mt-2" style="color: #cbd5e1; max-width: 650px; margin: 0 auto; font-size: 0.95rem;">
                     The essential pillars shaping our culture, community actions, and fellowship standards:
                 </p>
             </div>
 
             <div class="row g-4">
                 <div class="col-md-4 col-sm-6">
-                    <div class="club-card p-4 h-100 d-flex flex-column justify-content-between">
+                    <div class="core-value-card p-4 h-100 d-flex flex-column justify-content-between">
                         <div>
-                            <div class="d-flex align-items-center gap-3 mb-2">
-                                <div class="p-2 rounded-3 bg-warning bg-opacity-10 text-warning fs-4"><i class="bi bi-shield-check"></i></div>
-                                <h4 class="font-serif text-navy fw-bold mb-0">Integrity</h4>
+                            <div class="d-flex align-items-center gap-3 mb-3">
+                                <div class="p-2 rounded-3 bg-warning bg-opacity-20 text-warning fs-4 d-flex align-items-center justify-content-center" style="width: 48px; height: 48px;"><i class="bi bi-shield-check"></i></div>
+                                <h4 class="font-serif text-white fw-bold mb-0 fs-5">Integrity</h4>
                             </div>
-                            <p class="text-muted small mt-2 mb-0" style="line-height: 1.7;">
+                            <p class="small mt-2 mb-0" style="color: #cbd5e1; line-height: 1.75; font-size: 0.92rem;">
                                 We believe in honesty, transparency, and responsible conduct across all our operations and relationships.
                             </p>
                         </div>
@@ -261,13 +312,13 @@
                 </div>
 
                 <div class="col-md-4 col-sm-6">
-                    <div class="club-card p-4 h-100 d-flex flex-column justify-content-between">
+                    <div class="core-value-card p-4 h-100 d-flex flex-column justify-content-between">
                         <div>
-                            <div class="d-flex align-items-center gap-3 mb-2">
-                                <div class="p-2 rounded-3 bg-primary bg-opacity-10 text-primary fs-4"><i class="bi bi-people"></i></div>
-                                <h4 class="font-serif text-navy fw-bold mb-0">Unity</h4>
+                            <div class="d-flex align-items-center gap-3 mb-3">
+                                <div class="p-2 rounded-3 bg-info bg-opacity-20 text-info fs-4 d-flex align-items-center justify-content-center" style="width: 48px; height: 48px;"><i class="bi bi-people"></i></div>
+                                <h4 class="font-serif text-white fw-bold mb-0 fs-5">Unity</h4>
                             </div>
-                            <p class="text-muted small mt-2 mb-0" style="line-height: 1.7;">
+                            <p class="small mt-2 mb-0" style="color: #cbd5e1; line-height: 1.75; font-size: 0.92rem;">
                                 We value teamwork and believe that collective effort creates greater impact for our community.
                             </p>
                         </div>
@@ -275,13 +326,13 @@
                 </div>
 
                 <div class="col-md-4 col-sm-6">
-                    <div class="club-card p-4 h-100 d-flex flex-column justify-content-between">
+                    <div class="core-value-card p-4 h-100 d-flex flex-column justify-content-between">
                         <div>
-                            <div class="d-flex align-items-center gap-3 mb-2">
-                                <div class="p-2 rounded-3 bg-danger bg-opacity-10 text-danger fs-4"><i class="bi bi-heart"></i></div>
-                                <h4 class="font-serif text-navy fw-bold mb-0">Respect</h4>
+                            <div class="d-flex align-items-center gap-3 mb-3">
+                                <div class="p-2 rounded-3 bg-danger bg-opacity-20 text-danger fs-4 d-flex align-items-center justify-content-center" style="width: 48px; height: 48px;"><i class="bi bi-heart"></i></div>
+                                <h4 class="font-serif text-white fw-bold mb-0 fs-5">Respect</h4>
                             </div>
-                            <p class="text-muted small mt-2 mb-0" style="line-height: 1.7;">
+                            <p class="small mt-2 mb-0" style="color: #cbd5e1; line-height: 1.75; font-size: 0.92rem;">
                                 We respect every member and value diversity of ideas, professions, and backgrounds.
                             </p>
                         </div>
@@ -289,13 +340,13 @@
                 </div>
 
                 <div class="col-md-4 col-sm-6">
-                    <div class="club-card p-4 h-100 d-flex flex-column justify-content-between">
+                    <div class="core-value-card p-4 h-100 d-flex flex-column justify-content-between">
                         <div>
-                            <div class="d-flex align-items-center gap-3 mb-2">
-                                <div class="p-2 rounded-3 bg-success bg-opacity-10 text-success fs-4"><i class="bi bi-hand-thumbs-up"></i></div>
-                                <h4 class="font-serif text-navy fw-bold mb-0">Service</h4>
+                            <div class="d-flex align-items-center gap-3 mb-3">
+                                <div class="p-2 rounded-3 bg-success bg-opacity-20 text-success fs-4 d-flex align-items-center justify-content-center" style="width: 48px; height: 48px;"><i class="bi bi-hand-thumbs-up"></i></div>
+                                <h4 class="font-serif text-white fw-bold mb-0 fs-5">Service</h4>
                             </div>
-                            <p class="text-muted small mt-2 mb-0" style="line-height: 1.7;">
+                            <p class="small mt-2 mb-0" style="color: #cbd5e1; line-height: 1.75; font-size: 0.92rem;">
                                 We encourage members to contribute their time, skills, and resources for the benefit of society.
                             </p>
                         </div>
@@ -303,13 +354,13 @@
                 </div>
 
                 <div class="col-md-4 col-sm-6">
-                    <div class="club-card p-4 h-100 d-flex flex-column justify-content-between">
+                    <div class="core-value-card p-4 h-100 d-flex flex-column justify-content-between">
                         <div>
-                            <div class="d-flex align-items-center gap-3 mb-2">
-                                <div class="p-2 rounded-3 bg-warning bg-opacity-10 text-warning fs-4"><i class="bi bi-award"></i></div>
-                                <h4 class="font-serif text-navy fw-bold mb-0">Leadership</h4>
+                            <div class="d-flex align-items-center gap-3 mb-3">
+                                <div class="p-2 rounded-3 bg-warning bg-opacity-20 text-warning fs-4 d-flex align-items-center justify-content-center" style="width: 48px; height: 48px;"><i class="bi bi-award"></i></div>
+                                <h4 class="font-serif text-white fw-bold mb-0 fs-5">Leadership</h4>
                             </div>
-                            <p class="text-muted small mt-2 mb-0" style="line-height: 1.7;">
+                            <p class="small mt-2 mb-0" style="color: #cbd5e1; line-height: 1.75; font-size: 0.92rem;">
                                 We promote responsible leadership, proactive initiative, and ongoing personal development.
                             </p>
                         </div>
@@ -317,13 +368,13 @@
                 </div>
 
                 <div class="col-md-4 col-sm-6">
-                    <div class="club-card p-4 h-100 d-flex flex-column justify-content-between">
+                    <div class="core-value-card p-4 h-100 d-flex flex-column justify-content-between">
                         <div>
-                            <div class="d-flex align-items-center gap-3 mb-2">
-                                <div class="p-2 rounded-3 bg-info bg-opacity-10 text-info fs-4"><i class="bi bi-gem"></i></div>
-                                <h4 class="font-serif text-navy fw-bold mb-0">Friendship</h4>
+                            <div class="d-flex align-items-center gap-3 mb-3">
+                                <div class="p-2 rounded-3 bg-info bg-opacity-20 text-info fs-4 d-flex align-items-center justify-content-center" style="width: 48px; height: 48px;"><i class="bi bi-gem"></i></div>
+                                <h4 class="font-serif text-white fw-bold mb-0 fs-5">Friendship</h4>
                             </div>
-                            <p class="text-muted small mt-2 mb-0" style="line-height: 1.7;">
+                            <p class="small mt-2 mb-0" style="color: #cbd5e1; line-height: 1.75; font-size: 0.92rem;">
                                 We believe strong relationships and mutual trust are the foundation of a strong community.
                             </p>
                         </div>

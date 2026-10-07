@@ -43,11 +43,6 @@
                                     </div>
                                 </div>
 
-                                <div class="p-2 px-3 rounded-3 small mb-3" style="background: rgba(197, 160, 89, 0.12); border: 1px dashed rgba(197, 160, 89, 0.5); font-size: 0.8rem; color: #1e293b;">
-                                    <i class="bi bi-shield-check text-warning me-1"></i>
-                                    <strong>New Member Access:</strong> Initial temporary password is <code>password123</code>. You can change your password inside your portal.
-                                </div>
-
                                 <div class="d-flex justify-content-between align-items-center mb-4 small">
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" name="remember" id="remember">
@@ -61,33 +56,6 @@
                                 </button>
                             </form>
 
-                            <!-- Demo Quick Credentials Box -->
-                            <div class="mt-4 p-3 bg-light rounded-3 border small">
-                                <h6 class="fw-bold text-navy mb-2"><i class="bi bi-key-fill text-warning me-1"></i> Demo Credentials:</h6>
-                                <div class="row g-2">
-                                    <div class="col-6">
-                                        <button type="button" class="btn btn-sm btn-outline-dark w-100 text-truncate" onclick="fillCreds('admin@chatkhil.club', 'password123')">
-                                            Super Admin
-                                        </button>
-                                    </div>
-                                    <div class="col-6">
-                                        <button type="button" class="btn btn-sm btn-outline-dark w-100 text-truncate" onclick="fillCreds('manager@chatkhil.club', 'password123')">
-                                            Member Mgr
-                                        </button>
-                                    </div>
-                                    <div class="col-6">
-                                        <button type="button" class="btn btn-sm btn-outline-dark w-100 text-truncate" onclick="fillCreds('content@chatkhil.club', 'password123')">
-                                            Content Mgr
-                                        </button>
-                                    </div>
-                                    <div class="col-6">
-                                        <button type="button" class="btn btn-sm btn-outline-primary w-100 text-truncate" onclick="fillCreds('member@chatkhil.club', 'password123')">
-                                            Demo Member
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-
                             <div class="text-center mt-4 small text-muted">
                                 Not a member yet? <a href="{{ route('membership.apply') }}" class="text-navy fw-bold text-decoration-none">Apply for Membership &rarr;</a>
                             </div>
@@ -98,14 +66,5 @@
             </div>
         </div>
     </div>
-
-    @push('scripts')
-    <script>
-        function fillCreds(login, pass) {
-            document.getElementById('login_input').value = login;
-            document.getElementById('password_input').value = pass;
-        }
-    </script>
-    @endpush
 
 @endsection

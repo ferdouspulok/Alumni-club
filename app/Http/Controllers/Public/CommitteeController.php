@@ -24,6 +24,35 @@ class CommitteeController extends Controller
                 ?? $allCommittees->first();
         }
 
-        return view('public.committee', compact('allCommittees', 'selectedCommittee'));
+        $president = null;
+        $otherMembers = collect();
+
+        if ($selectedCommittee && $selectedCommittee->members) {
+            // Find President: exact match first
+            $president = $selectedCommittee->members->first(function ($member) {
+                return strcasecmp(trim($member->designation), 'President') === 0;
+            });
+
+            // Fallback: contains 'President' but not 'Executive', 'Vice', 'Past'
+            if (!$president) {
+                $president = $selectedCommittee->members->first(function ($member) {
+                    $des = strtolower(trim($member->designation));
+                    return str_contains($des, 'president')
+                        && !str_contains($des, 'vice')
+                        && !str_contains($des, 'executive')
+                        && !str_contains($des, 'past');
+                });
+            }
+
+            if ($president) {
+                $otherMembers = $selectedCommittee->members->reject(function ($m) use ($president) {
+                    return $m->id === $president->id;
+                });
+            } else {
+                $otherMembers = $selectedCommittee->members;
+            }
+        }
+
+        return view('public.committee', compact('allCommittees', 'selectedCommittee', 'president', 'otherMembers'));
     }
 }
